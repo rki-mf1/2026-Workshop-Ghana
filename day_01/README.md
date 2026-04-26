@@ -50,9 +50,10 @@ cd ~/2026-Workshop-HSPA-Morocco
 
 ## 👩‍🏫 Slides
 
-- [Workshop Content and Structure](https://docs.google.com/presentation/d/1iOgXkMe4H57Lz6YaMutH6Nb4Axd_WMsq)
-- [Introduction to Linux](https://docs.google.com/presentation/d/1jEvhIUVv_nTQVxr0yPwji75wMrpWIJsW)
-- [Simple Shell Scripts](https://docs.google.com/presentation/d/1BvXDtCLKArlOBK51v7CPbSxAaW6g3J8V)
+- [Workshop Content and Structure](https://docs.google.com/presentation/d/1U74ghlzC4Ryip9PQTpK3NZywGOgDlPMr45qgq-xlrg4)
+- [Introduction to Linux](https://docs.google.com/presentation/d/1IT6ZC0z4hHnygW81NiD_4oupOAdWxyLN_-14xigugCA)
+- [Simple Shell Scripts](https://docs.google.com/presentation/d/1lVnhR3xm0Md9LdKfhtsvSGnH3Ou9l8PEDnNO_jcQSmU)
+- [Cheat Sheet - Linux for Bioinformatics](https://drive.google.com/file/d/1xBTF8B2VREUitXISQvDYYwPE3uMrd9Xu/view?usp=drive_link)
 
 ## 📝 Evaluation
 
