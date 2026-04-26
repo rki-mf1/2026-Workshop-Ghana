@@ -55,7 +55,7 @@ Conda environments can be described using a [YAML](https://en.wikipedia.org/wiki
 We will first inspect the environment file for `bcftools`. This recipe tells Conda to create an environment containing `bcftools`.
 
 ```bash
-cat /home/mf1/nambi24/flu-workflow/envs/bcftools.yaml
+cat ~/2026-Workshop-HSPA-Morocco/envs/bcftools.yaml
 ```
 
 ---
@@ -65,7 +65,7 @@ cat /home/mf1/nambi24/flu-workflow/envs/bcftools.yaml
 Now we can create the environment.
 
 ```bash
-conda env create -n bcftools -f /home/mf1/nambi24/flu-workflow/envs/bcftools.yaml
+conda env create -n bcftools -f ~/2026-Workshop-HSPA-Morocco/envs/bcftools.yaml
 ```
 
 Here, we use two important options:
@@ -191,6 +191,6 @@ In this practical, you used the following Conda commands:
 
 ---
 
-[Next tutorial](./02_intermediate_commands.md)
+[Next tutorial](./02_downloading_datasets.md)
 
 [⬅ Back to main page](../README.md)
