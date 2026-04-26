@@ -4,7 +4,7 @@
 
 - TODO
 
-## Learning goals
+## 🎯 Learning goals
 
 By the end of Day 01, you should be able to:
 
@@ -42,19 +42,19 @@ git clone https://github.com/rki-mf1/2026-Workshop-HSPA-Morocco.git
 cd ~/2026-Workshop-HSPA-Morocco
 ```
 
-## Practicals
+## 💻 Practicals
 
 1. [Linux Basics, Navigation, and File Management](01_linux-basics-navigation.md)
 2. [Viewing, Editing, Compressing, and Searching Files](02_linux-view-edit-search.md)
 
 
-## Slides
+## 👩‍🏫 Slides
 
 - [Workshop Content and Structure](https://docs.google.com/presentation/d/1iOgXkMe4H57Lz6YaMutH6Nb4Axd_WMsq)
 - [Introduction to Linux](https://docs.google.com/presentation/d/1jEvhIUVv_nTQVxr0yPwji75wMrpWIJsW)
 - [Simple Shell Scripts](https://docs.google.com/presentation/d/1BvXDtCLKArlOBK51v7CPbSxAaW6g3J8V)
 
-## Evaluation
+## 📝 Evaluation
 
 Please fill in this [daily feedback evaluation](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Daily-Feedback) at the end of the day.
 
