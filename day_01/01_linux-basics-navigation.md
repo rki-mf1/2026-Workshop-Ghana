@@ -93,12 +93,19 @@ Try these shortcuts:
 - Type `cle` and press `Tab`.
 - Start typing `cd ~/2026` and press `Tab` for autocompletion.
 
-Linux is case-sensitive:
+Linux is **case-sensitive**:
 
 - `clear` works
 - `CLEAR` does not
 
-Avoid spaces in file names when possible.
+> [!TIP]
+> **Naming files and directories in the Linux command line**
+>
+> - Do not use spaces or special characters such as `<`, `>`, `|`, `\`, `:`, `(`, `)`, `&`, `;`, `?`, or `*`.
+> - Do not begin names with a dash `-` or a full stop `.`.
+> - Use letters, numbers, dashes `-`, and underscores `_`.
+> - Use a full stop `.` mainly for file extensions, such as `.pdf`, `.txt`, or `.fastq.gz`.
+> - Linux is case-sensitive, so `my_first_file.txt`, `My_First_File.txt`, and `my_FIRST_file.txt` are three different files.
 
 ## 4. Moving around the filesystem
 
