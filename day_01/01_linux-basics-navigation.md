@@ -2,7 +2,7 @@
 
 # Linux Basics, Navigation, and File Management
 
-## Learning goals
+## 🎯 Learning goals
 
 By the end of this lesson, you should be able to:
 
@@ -23,7 +23,7 @@ All examples below use paths relative to that location.
 Open a terminal and move into the workshop repository:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco/day_01
+cd ~/2026-Workshop-HSPA-Morocco
 ```
 
 Create a safe practice area for this session:
@@ -37,6 +37,8 @@ Check where you are:
 ```bash
 pwd
 ```
+
+---
 
 ## 1. Your first commands
 
@@ -62,6 +64,8 @@ ls -lt
 - What does `ls ..` show?
 - Which option sorts by modification time, newest first?
 
+---
+
 ## 2. Getting help
 
 Most commands provide built-in documentation.
@@ -85,27 +89,22 @@ mkdir --help
 - Which `ls` option shows human-readable file sizes?
 - Which `cp` option lets you copy directories recursively?
 
+---
+
 ## 3. Useful terminal habits
 
-Try these shortcuts:
+Try these **shortcuts**:
 
-- Press the `↑`**Up Arrow** to reuse previous commands.
-- Type `cle` and press `Tab`.
-- Start typing `cd ~/2026` and press `Tab` for autocompletion.
+- Press the `↑` **Up Arrow** to reuse previous commands.
+- Type `cle` and press **Tab** to autocomplete `clear`.
+- Start typing `cd ~/2026` and press **Tab** to autocomplete the path.
 
 Linux is **case-sensitive**:
 
 - `clear` works
 - `CLEAR` does not
 
-> [!TIP]
-> **Naming files and directories in the Linux command line**
->
-> - Do not use spaces or special characters such as `<`, `>`, `|`, `\`, `:`, `(`, `)`, `&`, `;`, `?`, or `*`.
-> - Do not begin names with a dash `-` or a full stop `.`.
-> - Use letters, numbers, dashes `-`, and underscores `_`.
-> - Use a full stop `.` mainly for file extensions, such as `.pdf`, `.txt`, or `.fastq.gz`.
-> - Linux is case-sensitive, so `my_first_file.txt`, `My_First_File.txt`, and `my_FIRST_file.txt` are three different files.
+---
 
 ## 4. Moving around the filesystem
 
@@ -135,12 +134,14 @@ cd -
 pwd
 ```
 
-### Key ideas
+### 🗝️ Key ideas
 
 - `~` = your home directory
 - `.` = the current directory
 - `..` = the parent directory
 - `cd -` = the directory you were in previously
+
+---
 
 ## 5. Absolute and relative paths
 
@@ -161,7 +162,7 @@ ls .
 ls ..
 ```
 
-### Practice
+### 💬 Discussion
 
 Run these commands and explain why they work:
 
@@ -176,18 +177,29 @@ cd ..
 cd ./day_01
 ```
 
+---
+
 ## 6. Create files and directories
+
+> [!TIP]
+> **Naming files and directories in the Linux command line**
+> 
+> Good file and directory names make your work easier, especially when using tab completion, scripts, and command-line tools.
+> 
+> - Do not use spaces or special characters such as `<`, `>`, `|`, `\`, `:`, `(`, `)`, `&`, `;`, `?`, or `*`.
+> - Do not begin names with a dash `-` or a full stop `.`.
+> - Use letters, numbers, dashes `-`, and underscores `_`.
+> - Use a full stop `.` mainly for file extensions, such as `.pdf`, `.txt`, or `.fastq.gz`.
+> - Linux is case-sensitive, so `my_first_file.txt`, `My_First_File.txt`, and `my_FIRST_file.txt` are three different files.
 
 Return to your scratch directory:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco/day_01/scratch
+cd ~/2026-Workshop-HSPA-Morocco/scratch
 pwd
 ```
 
-Create files and directories
-
-Create a few files and folders:
+Create a few files and directories:
 
 ```bash
 touch notes.txt
@@ -204,7 +216,7 @@ echo "Hello Bioinformatics" > notes.txt
 cat notes.txt
 ```
 
-Append another line:
+**Append** another line:
 
 ```bash
 echo "Linux is powerful." >> notes.txt
@@ -225,7 +237,7 @@ nano my_text_file.txt
 
 Inside `nano`, try the following:
 
-- write two or three lines
+- write two or three lines (e.g. tell us how much you like whales 🐋)
 - save with `Ctrl + O`
 - exit with `Ctrl + X`
 
@@ -237,13 +249,17 @@ cat my_text_file.txt
 
 ### Useful nano shortcuts
 
-- `Ctrl + O` — save
-- `Ctrl + X` — exit
-- `Ctrl + W` — search
-- `Ctrl + K` — cut a line
-- `Ctrl + U` — paste
+In the command overview at the bottom of the screen when in `nano`, `^` indicates **Ctrl** and `M-` indicates **Alt**. For example, `^O` means `Ctrl + O`.
 
+Useful nano shortcuts:
 
+- `Ctrl + O` (`^O`) — write/save the file
+- `Ctrl + X` (`^X`) — exit nano
+- `Ctrl + W` (`^W`) — search within the file
+- `Ctrl + K` (`^K`) — cut the current line
+- `Ctrl + U` (`^U`) — paste the cut text
+
+---
 
 ## 7. Copy files and directories
 
@@ -261,7 +277,7 @@ cp notes.txt drafts/
 ls drafts
 ```
 
-Copy a directory recursively:
+Copy a directory **recursively**:
 
 ```bash
 cp -r drafts drafts_copy
@@ -273,6 +289,7 @@ ls
 - When do you need `-r` with `cp`?
 - What is the difference between copying a file and copying a directory?
 
+---
 
 ## 8. Move and rename files
 
@@ -297,6 +314,8 @@ mv renamed_file.txt drafts/final_notes.txt
 ls drafts
 ```
 
+---
+
 ## 9. Remove files and directories
 
 Remove a file:
@@ -310,22 +329,27 @@ Remove an empty directory:
 
 ```bash
 mkdir empty_dir
+ls
 rmdir empty_dir
+ls
 ```
 
 Remove a directory and everything inside it:
 
 ```bash
 rm -r drafts_copy
+ls
 ```
 
 > [!CAUTION]
 > Be careful with `rm`, especially with `rm -r`. Deleted files do not go to a recycle bin.
 
-### Question
+### 💬 Discussion
 
 - Why is `rm -r` more dangerous than `rm`?
 - What is the difference between `rmdir` and `rm -r`?
+
+---
 
 ## 10. View file contents
 
@@ -333,12 +357,6 @@ Use the file you already created:
 
 ```bash
 cat notes.txt
-```
-
-Open it page by page:
-
-```bash
-less notes.txt
 ```
 
 Show only the first lines:
@@ -353,10 +371,16 @@ Show only the last lines:
 tail notes.txt
 ```
 
+Open it page by page:
+
+```bash
+less notes.txt
+```
+
 ### Useful `less` controls
 
 - `q` — quit
-- `/pattern` — search inside the file
+- `/` followed by a pattern — search inside the file
 - `n` — next match
 - `p` — previous match
 - `Space` — next page
@@ -367,29 +391,41 @@ tail notes.txt
 - Which commands are more useful for large files?
 
 
+---
+
 ## 11. Mini challenge
 
 In `scratch` directory you created earlier, do the following:
 
-1. create a directory called `project_demo`
+1. create a directory called `project_demo`and move into it
 2. create a file called `readme.txt` inside it
 3. write one line into that file (e.g. "I love whales")
-4. copy the file to `readme_backup.txt`
-5. rename `readme_backup.txt` to `notes_backup.txt`
+4. copy `readme.txt` file and name it `readme_copy.txt`
+5. rename `readme_copy.txt` to `readme_backup.txt`
 6. show the first lines of the original `readme.txt` file
 
 One possible solution:
 
 ```bash
+# 1.
 cd ~/2026-Workshop-HSPA-Morocco/day_01/scratch
 mkdir project_demo
-echo "I love whales" > project_demo/readme.txt
-cp project_demo/readme.txt project_demo/readme_backup.txt
-mv project_demo/readme_backup.txt project_demo/notes_backup.txt
-head project_demo/readme.txt
+cd project_demo
+
+# 2. and 3.
+echo "I love whales" > readme.txt
+
+# 4.
+cp readme.txt readme_copy.txt
+
+# 5.
+mv readme_copy.txt readme_backup.txt
+
+# 6.
+head readme.txt
 ```
 
-## Quick reference
+## 📌 Quick reference
 
 | Command | Purpose |
 | --- | --- |
