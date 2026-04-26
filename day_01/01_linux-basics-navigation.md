@@ -30,7 +30,6 @@ Create a safe practice area for this session:
 
 ```bash
 mkdir -p scratch
-cd scratch
 ```
 
 Check where you are:
