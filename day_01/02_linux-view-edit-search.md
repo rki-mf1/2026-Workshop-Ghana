@@ -2,7 +2,7 @@
 
 # Viewing, Editing, Compressing, and Searching Files
 
-## Learning goals
+## 🎯 Learning goals
 
 By the end of this lesson, you should be able to:
 
@@ -13,20 +13,12 @@ By the end of this lesson, you should be able to:
 - extract columns from tabular files
 - write and run a Bash scripts
 
-## Working assumption
-
-This lesson assumes the repository is in your home directory:
-
-```bash
-cd ~/2026-Workshop-HSPA-Morocco/day_01
-```
-
 ## Before you start
 
 Open a terminal and move into the workshop repository:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco/day_01
+cd ~/2026-Workshop-HSPA-Morocco
 ```
 
 Create a safe practice area for this session:
@@ -41,6 +33,8 @@ Check where you are:
 ```bash
 pwd
 ```
+
+---
 
 ## 1. Working with `.tar.gz` archives
 
@@ -99,8 +93,8 @@ ls -R
 Compare the sizes of compressed file vs uncompressed directory:
 
 ```bash
-du -hs references.tar.gz
-du -hs references
+du -hs SRR32055875_irma_output.tar.gz
+du -hs SRR32055875_irma_output
 ```
 
 Try making your first `.tar.gz`:
@@ -218,13 +212,14 @@ grep -c "PASS" A_HA_H3.vcf
 Search case-insensitively:
 
 ```bash
+grep "pAsS" A_HA_H3.vcf
 grep -i "pAsS" A_HA_H3.vcf
 ```
 
 Search for lines that start with a pattern:
 
 ```bash
-grep "^>" Wuhan-Hu-1_ASM985889v3.fasta
+zgrep "^>" Wuhan-Hu-1_ASM985889v3.fasta
 grep "^#" A_HA_H3.vcf
 ```
 
@@ -270,10 +265,10 @@ grep "PASS" A_HA_H3.vcf | head
 Create a small CSV file:
 
 ```bash
-echo "Species,Serogroup,Country" > data.csv
-echo "Vibrio cholerae,O1,Germany" >> data.csv
-echo "Vibrio cholerae,O139,Ghana" >> data.csv
-echo "Vibrio cholerae,O139,Germany" >> data.csv
+echo "Species,Serogroup,Continent" > data.csv
+echo "Vibrio cholerae,O1,Essos" >> data.csv
+echo "Vibrio cholerae,O139,Westeros" >> data.csv
+echo "Vibrio cholerae,O139,Essos" >> data.csv
 ```
 
 Display it:
@@ -284,7 +279,7 @@ cat data.csv
 
 ### Extract columns with `cut`
 
-Get the `Serogroup` and `Country` columns:
+Get the `Serogroup` and `Continent` columns:
 
 ```bash
 cut -d "," -f 2-3 data.csv
@@ -340,6 +335,7 @@ wc -w data.csv
 Create a directory for scripts:
 
 ```bash
+cd ~/2026-Workshop-HSPA-Morocco/scratch_2
 mkdir -p scripts
 cd scripts
 ```
@@ -383,31 +379,37 @@ Save and exit.
 Give the script execute permission:
 
 ```bash
+ls -lh
 chmod +x create_project.sh
+ls -lh
 ```
 
 Run it explicitly with Bash:
 
 ```bash
-bash create_project.sh ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace Demo_Project
+bash create_project.sh ~/2026-Workshop-HSPA-Morocco/scratch_2/scripts demo_project
 ```
 
 Run it directly:
 
 ```bash
-./create_project.sh ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace Demo_Project_2
+./create_project.sh ~/2026-Workshop-HSPA-Morocco/scratch_2/scripts demo_project_2
+
+# or
+
+./create_project.sh . demo_project_3
 ```
 
 Check the results:
 
 ```bash
-tree ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace/Demo_Project
+tree demo_project
 ```
 
 If `tree` is not installed:
 
 ```bash
-ls -R ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace/Demo_Project
+ls -R demo_project
 ```
 
 ### 💬 Discussion
@@ -446,11 +448,11 @@ ls
 ### 💬 Discussion
 
 - What is brace expansion in `{1..4}`?
-- Why do we write `file_${number}.txt` instead of `file_$number.txt`?
+- Why is it good practice to write variables as `${number}` instead of `$number` in scripts?
 
 ---
 
-## 10. Optional | conditional script
+## 10. Optional | Script with if-else conditions
 
 Create one more script:
 
@@ -490,20 +492,22 @@ chmod +x if_else.sh
 
 ---
 
-## 11. Mini challenge
+## 11. Optional | Mini VCF challenge
 
-In `session_2_workspace`, do the following:
+In `~/2026-Workshop-HSPA-Morocco/scratch_2`, do the following:
 
-1. create a CSV file with at least four rows
-2. extract one column with `cut`
-3. sort the values
-4. count unique values
-5. create a project folder with your script
-6. write a loop script that creates three `.txt` files
+1. Exclude header lines starting with `#` from the file `A_HA_H3.vcf`
+2. Use `cut` to extract the `REF` column
+3. Count unique values
+4. Save the output in a file called `my_results.txt`
+
+```bash
+grep -v "^#" A_HA_H3.vcf | cut -f4 | sort | uniq -c > my_results.txt
+```
 
 ---
 
-## Quick reference
+## 📌 Quick reference
 
 | Command | Purpose |
 | --- | --- |
@@ -522,72 +526,6 @@ In `session_2_workspace`, do the following:
 | `bash script.sh` | Run a script with Bash |
 | `./script.sh` | Run an executable script directly |
 
---- 
-
-## 12. Safer loop over text files
-
-Create a script called `basename_safe.sh`:
-
-```bash
-#!/bin/bash
-
-in_dir="$1"
-
-for file in "$in_dir"/*.txt; do
-  name=$(basename "${file%.txt}")
-  echo "$name"
-  echo "$file"
-  echo "------"
-done
-```
-
-Run it like this:
-
-```bash
-chmod +x basename_safe.sh
-./basename_safe.sh ~/2026-Workshop-HSPA-Morocco/day_01/session_2_workspace/scripts
-```
-
-### 💬 Discussion
-
-- What does `basename` do here?
-- What is the difference between the shortened name and the full path?
-
 ---
-
-## 13. Counting bunnies with a loop
-
-Create `bunnies.sh`:
-
-```bash
-#!/bin/bash
-
-for n in $(seq 1 15); do
-  if [ "$n" -eq 1 ]; then
-    echo "$n bunny"
-  else
-    echo "$n bunnies"
-  fi
-done
-```
-
-Run it:
-
-```bash
-chmod +x bunnies.sh
-./bunnies.sh
-```
-
----
-
-## 14. Improve your script
-
-Choose one of your scripts to improve by adding one or more of the following:
-
-- a usage message when no arguments are given
-- a check that a directory exists before using it
-- clearer variable names
-- comments at the top of the script
-- quoted variables such as `"$1"` and `"$TARGET_DIR"`
 
 [⬅ Back to main page](../README.md)
