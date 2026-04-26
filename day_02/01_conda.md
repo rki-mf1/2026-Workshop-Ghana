@@ -32,7 +32,9 @@ In this practical, we will create and use a Conda environment for `bcftools`.
 First, let’s check which Conda environments are already available.
 
 ```bash
-conda info --envs
+conda env list
+# or
+conda env list
 ```
 You should see a list of environments. The **currently active environment** is marked with an asterisk (`*`).
 
@@ -78,7 +80,7 @@ Here, we use two important options:
 Now list the available Conda environments again.
 
 ```bash
-conda info --envs
+conda env list
 ```
 You should now see an environment called **bcftools**.
 
@@ -89,7 +91,7 @@ You should now see an environment called **bcftools**.
 ### 5. Try running bcftools before activating the environment
 
 The `conda activate` command lets you switch to a specific environment. 
-You can use any of the environments that were listed in the output of `conda info --envs` command. 
+You can use any of the environments that were listed in the output of `conda env list` command. 
 Once you activate a enviroment you will be able to use the software that is installed in that environment.
 
 ```bash
@@ -181,7 +183,7 @@ In this practical, you used the following Conda commands:
 
 | Command | Purpose |
 |---|---|
-| `conda info --envs` | List available Conda environments |
+| `conda env list` | List available Conda environments |
 | `conda env create -n bcftools -f day_02/envs/bcftools.yaml` | Create a new environment from a YAML file |
 | `conda activate bcftools` | Activate the `bcftools` environment |
 | `conda list` | List installed packages in the active environment |
