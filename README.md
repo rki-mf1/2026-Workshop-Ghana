@@ -31,11 +31,11 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 | Time          | Activity                                 |
 |---------------|------------------------------------------|
 | 09:00 - 09:30 | Recap                                    |
-| 09:30 - 10:45 | Talk: Data and Software Management       |
+| 09:30 - 10:45 | [Talk: Data and Software Management](https://docs.google.com/presentation/d/1U74ghlzC4Ryip9PQTpK3NZywGOgDlPMr45qgq-xlrg4/edit?slide=id.g2b2d280a99c_6_112#slide=id.g2b2d280a99c_6_112)       |
 | 10:45 - 11:00 | ☕ Break                                 |
 | 11:00 - 12:00 | Hands-On: Software Management with Conda |
 | 12:00 - 13:00 | 🍽️ Lunch Break                           |
-| 13:00 - 13:30 | Participant Presentation                 |
+| 13:00 - 13:30 | Introduction on NGS workflows and data   |
 | 13:30 - 14:45 | Talk: QC using fastp and nanoplot        |
 | 14:45 - 15:00 | ☕ Break                                 |
 | 15:00 - 16:45 | Hands-On: QC using fastp and nanoplot    |
