@@ -23,7 +23,7 @@ This is where **Conda environments** are useful.
 
 A Conda environment is like a separate software box. Each environment can contain a specific set of tools and versions. For example, one environment may contain `bcftools`, another may contain `fastp`, and another may contain tools for genome assembly.
 
-In this practical, we will create and use a Conda environment for `bcftools`.
+In this practical, we will create and use a Conda environment for `fastp`.
 
 ---
 
@@ -52,10 +52,10 @@ base                  *  /home/user/miniconda3
 
 Conda environments can be described using a [YAML](https://en.wikipedia.org/wiki/YAML) file. This file acts like a recipe: it tells Conda which software should be installed.
 
-We will first inspect the environment file for `bcftools`. This recipe tells Conda to create an environment containing `bcftools`.
+We will first inspect the environment file for `fastp`. This recipe tells Conda to create an environment containing `fastp`.
 
 ```bash
-cat ~/2026-Workshop-HSPA-Morocco/envs/bcftools.yaml
+cat ~/2026-Workshop-HSPA-Morocco/envs/fastp.yaml
 ```
 
 ---
@@ -65,13 +65,13 @@ cat ~/2026-Workshop-HSPA-Morocco/envs/bcftools.yaml
 Now we can create the environment.
 
 ```bash
-conda env create -n bcftools -f ~/2026-Workshop-HSPA-Morocco/envs/bcftools.yaml
+conda env create -n fastp -f ~/2026-Workshop-HSPA-Morocco/envs/fastp.yaml
 ```
 
 Here, we use two important options:
 
-- `-n` bcftools` gives the new environment the name **bcftools**
-- `-f` day_02/envs/bcftools.yaml` tells Conda which YAML recipe file to use
+- `-n` fastp` gives the new environment the name **fastp**
+- `-f` day_02/envs/fastp.yaml` tells Conda which YAML recipe file to use
 
 ---
 
@@ -82,37 +82,37 @@ Now list the available Conda environments again.
 ```bash
 conda env list
 ```
-You should now see an environment called **bcftools**.
+You should now see an environment called **fastp**.
 
 🎉 Congratulations! You have created your first Conda environment in this workshop.
 
 ---
 
-### 5. Try running bcftools before activating the environment
+### 5. Try running fastp before activating the environment
 
 The `conda activate` command lets you switch to a specific environment. 
 You can use any of the environments that were listed in the output of `conda env list` command. 
 Once you activate a enviroment you will be able to use the software that is installed in that environment.
 
 ```bash
-# try to use bcftools
-bcftools
+# try to use fastp
+fastp
 ```
 
-Before activating the environment, let’s try running bcftools.
+Before activating the environment, let’s try running fastp.
 
 ```bash
-bcftools
+fastp
 ```
 
 You may see an error message similar to this:
 
 ```bash
-Command 'bcftools' not found
+Command 'fastp' not found
 ```
 This is expected.
 
-The software was installed inside the bcftools Conda environment, but that environment is not active yet.
+The software was installed inside the fastp Conda environment, but that environment is not active yet.
 
 ---
 
@@ -121,31 +121,31 @@ The software was installed inside the bcftools Conda environment, but that envir
 To use software installed inside a Conda environment, we first need to activate it.
 
 ```bash
-conda activate bcftools
+conda activate fastp
 ```
 
 Your terminal prompt may change and show the active environment name:
 
 ```bash
-(bcftools) user@computer:~$
+(fastp) user@computer:~$
 ```
 
-Now try running bcftools again.
+Now try running fastp again.
 
 ```bash
-bcftools
+fastp
 ```
 
-This time, you should see the bcftools help message instead of an error.
+This time, you should see the fastp help message instead of an error.
 
 ---
 
-### 7. Check which version of bcftools is installed
+### 7. Check which version of fastp is installed
 
 It is good practice to check software versions, especially when working on reproducible analyses.
 
 ```bash
-bcftools --version
+fastp --version
 ```
 
 ---
@@ -173,9 +173,9 @@ conda deactivate
 Try to answer the following questions:
 
 - Which command lists all available Conda environments?
-- Which command activates the `bcftools` environment?
-- Why did `bcftools` not work before activating the environment?
-- Which command shows the installed version of `bcftools`?
+- Which command activates the `fastp` environment?
+- Why did `fastp` not work before activating the environment?
+- Which command shows the installed version of `fastp`?
 
 ### 📌 Quick reference
 
@@ -184,8 +184,8 @@ In this practical, you used the following Conda commands:
 | Command | Purpose |
 |---|---|
 | `conda env list` | List available Conda environments |
-| `conda env create -n bcftools -f day_02/envs/bcftools.yaml` | Create a new environment from a YAML file |
-| `conda activate bcftools` | Activate the `bcftools` environment |
+| `conda env create -n fastp -f day_02/envs/fastp.yaml` | Create a new environment from a YAML file |
+| `conda activate fastp` | Activate the `fastp` environment |
 | `conda list` | List installed packages in the active environment |
 | `conda deactivate` | Leave the active environment |
 
