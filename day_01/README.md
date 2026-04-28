@@ -2,7 +2,7 @@
 
 ## Participants self-assessment
 
-- TODO
+Before we begin with the training, please fill in this [Pre-Training Assesment]([https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Daily-Feedback](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Pre-and-Post-Training-Assessments).
 
 ## 🎯 Learning goals
 
