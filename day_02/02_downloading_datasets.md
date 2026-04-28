@@ -2,7 +2,7 @@
 
 To download the small datasets used in this workshop, we first need to install a few tools.
 
-This version uses **NCBI SRA Toolkit** instead of `fastq-dl`. The reads are downloaded with `prefetch`, converted to FASTQ with `fasterq-dump`, and compressed with `pigz`.
+We will use **NCBI SRA Toolkit**. The reads are downloaded with `prefetch`, converted to FASTQ with `fasterq-dump`, and compressed with `pigz`.
 
 ```bash
 # install SRA Toolkit and pigz
