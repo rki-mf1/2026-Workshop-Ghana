@@ -29,7 +29,7 @@ By the end of Day 04, you should be able to:
 ## 👩‍🏫 Slides
 
 - [Introduction to Molecular Phylogenetics](https://docs.google.com/presentation/d/1V85Ccei1zCsNBsOFiWi6TtxxlXaJ6czeIyqU4IouNg0)
-- [Nextclade]([TBA](https://docs.google.com/presentation/d/1pHw3rN3BllqocSr25rz-ktSqABu64Fge7Y8wQBtNiAM)
+- [Nextclade](https://docs.google.com/presentation/d/1pHw3rN3BllqocSr25rz-ktSqABu64Fge7Y8wQBtNiAM)
 
 ## 📝 Evaluation
 
