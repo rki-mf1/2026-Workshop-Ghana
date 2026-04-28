@@ -17,7 +17,7 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 | Time          | Activity                 |
 |---------------|--------------------------|
 | 09:00 - 09:30 | Check-in                 |
-| 09:30 - 10:45 | Setting up laptops       |
+| 09:30 - 10:45 | Workshop Intro and Setting up Laptops       |
 | 10:45 - 11:00 | ☕ Break                 |
 | 11:00 - 12:00 | Talk: Linux Intro        |
 | 12:00 - 13:00 | 🍽️ Lunch Break           |
@@ -35,7 +35,7 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 | 10:45 - 11:00 | ☕ Break                                 |
 | 11:00 - 12:00 | Hands-On: Software Management with Conda |
 | 12:00 - 13:00 | 🍽️ Lunch Break                           |
-| 13:00 - 13:30 | Introduction on NGS workflows and data generation   |
+| 13:00 - 13:30 | NGS Introduction                         |
 | 13:30 - 14:00 | Talk: QC using fastp                     |
 | 14:00 - 14:30 | ☕ Break                                 |
 | 14:30 - 16:45 | Hands-On: QC using fastp                 |
