@@ -28,6 +28,7 @@ By the end of Day 02, you should be able to:
 
 - [Software Management with Conda](https://docs.google.com/presentation/d/1azwrgmGOO6U6XHdzeMM9lkMy5qWdN6DpnK7EU667lwc)
 - [Project Organization - Data Managment](https://docs.google.com/presentation/d/1a03UheW7MLbfW_u0VUDbLG4xcHsgVRexTvIvDqUQFpU)
+- [Next Generation Sequencing data generation with ONT](https://docs.google.com/presentation/d/1B_hxC1f3wMx3cx_PPQDClCiM388jzVW6H_OmUD5XSPI/edit?usp=drive_link)
 - [ONT Primary Data Processing](https://docs.google.com/presentation/d/1N1NMMKlr9z1v0xEKVdkTTSu6d8hmEA4nP3phDasRRSY)
 
 ## Evaluation
