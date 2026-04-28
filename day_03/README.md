@@ -24,13 +24,13 @@ By the end of Day 03, you should be able to:
 
 ## 💻 Practicals
 
-1. [Mapping and Reference-Based Assembly](01_minimap2.md)
-2. [Hands-On: Mapping with minimap2](02_MIRA_NF.md)
+1. [Mapping with minimap2](01_minimap2.md)
+2. [MIRA-NF](02_MIRA_NF.md)
 
 ## 👩‍🏫 Slides
 
 - [Mapping and Reference-Based Assembly](https://docs.google.com/presentation/d/1v6zL6iEzGx5J7rtEcjGziaafWSFiwWpGT1CKWs94xfE)
-- [VCF Files and Variant Calling](https://docs.google.com/presentation/d/1fQEHHBpG6SRKNlKSIgZCDFn1uWXzjf9TxwdHP9aZ1LA)
+- [Variant Calling](https://docs.google.com/presentation/d/1fQEHHBpG6SRKNlKSIgZCDFn1uWXzjf9TxwdHP9aZ1LA)
 
 ## 📝 Evaluation
 
