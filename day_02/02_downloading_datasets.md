@@ -71,9 +71,7 @@ for acc in \
   SRR18858570 \
   SRR23056640 \
   SRR27995776 \
-  SRR21357556 \
-  SRR28439041 \
-  SRR18858561
+  SRR21357556
 do
   echo "Downloading ${acc}"
 
