@@ -266,24 +266,6 @@ Create a text file with the mapping statistics.
 samtools flagstat "${SC2_OUT}.sorted.bam" > "${SC2_OUT}.flagstat.txt"
 ```
 
-Check average depth across the SARS-CoV-2 reference.
-
-```bash
-samtools depth "${SC2_OUT}.sorted.bam" | awk '
-  {
-    total += $3
-    count += 1
-  }
-  END {
-    if (count > 0) {
-      print "Mean depth:", total / count
-    } else {
-      print "No covered positions found"
-    }
-  }
-'
-```
-
 Check the first few covered positions.
 
 ```bash
@@ -392,24 +374,6 @@ Check coverage depth.
 
 ```bash
 samtools depth "${IAV_OUT}.sorted.bam" | head
-```
-
-Calculate mean depth across covered positions.
-
-```bash
-samtools depth "${IAV_OUT}.sorted.bam" | awk '
-  {
-    total += $3
-    count += 1
-  }
-  END {
-    if (count > 0) {
-      print "Mean depth:", total / count
-    } else {
-      print "No covered positions found"
-    }
-  }
-'
 ```
 
 Check how many positions are covered per reference segment.
