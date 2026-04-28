@@ -2,9 +2,11 @@
 
 To download the small datasets used in this workshop, we first need to install a few tools.
 
+This version uses **NCBI SRA Toolkit** instead of `fastq-dl`. The reads are downloaded with `prefetch`, converted to FASTQ with `fasterq-dump`, and compressed with `pigz`.
+
 ```bash
-# install fastq-dl
-conda create -y -n fastq-dl bioconda::fastq-dl
+# install SRA Toolkit and pigz
+conda create -y -n sra-tools -c conda-forge -c bioconda sra-tools pigz
 
 # install ncbi-datasets
 conda create -y -n ncbi-datasets-cli conda-forge::ncbi-datasets-cli
@@ -20,7 +22,7 @@ cd ~/2026-Workshop-HSPA-Morocco
 
 ```bash
 # activate conda environment
-conda activate fastq-dl
+conda activate sra-tools
 
 # create directory for raw Influenza A data
 mkdir -p data/raw_data/iav_h3n2
@@ -35,7 +37,23 @@ for acc in \
   SRR32055884 \
   SRR32055883
 do
-  fastq-dl --provider sra -a "$acc" --prefix "$acc"
+  echo "Downloading ${acc}"
+
+  # download the SRA file
+  prefetch "$acc" --output-directory .
+
+  # convert SRA to FASTQ
+  fasterq-dump "${acc}/${acc}.sra" \
+    --split-files \
+    --threads 4 \
+    --outdir . \
+    --temp .
+
+  # compress FASTQ files
+  pigz -p 4 "${acc}"*.fastq
+
+  # remove downloaded SRA directory after successful conversion
+  rm -r "$acc"
 done
 
 cd ../../..
@@ -57,7 +75,23 @@ for acc in \
   SRR28439041 \
   SRR18858561
 do
-  fastq-dl --provider sra -a "$acc" --prefix "$acc"
+  echo "Downloading ${acc}"
+
+  # download the SRA file
+  prefetch "$acc" --output-directory .
+
+  # convert SRA to FASTQ
+  fasterq-dump "${acc}/${acc}.sra" \
+    --split-files \
+    --threads 4 \
+    --outdir . \
+    --temp .
+
+  # compress FASTQ files
+  pigz -p 4 "${acc}"*.fastq
+
+  # remove downloaded SRA directory after successful conversion
+  rm -r "$acc"
 done
 
 cd ../../..
@@ -115,7 +149,7 @@ unzip ncbi_dataset.zip
 mv ncbi_dataset/data/*/*.fna .
 
 # rename FASTA file
-GCF_009858895.2_ASM985889v3_genomic.fna Wuhan-Hu-1_ASM985889v3.fasta
+mv GCF_009858895.2_ASM985889v3_genomic.fna Wuhan-Hu-1_ASM985889v3.fasta
 
 # cleanup
 rm -r md5sum.txt ncbi_dataset* README.md
