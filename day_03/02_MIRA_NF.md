@@ -1,104 +1,296 @@
-# MIRA-NF Flu-ONT
+[⬅ Back to Day 03 overview](README.md)
 
-This is a tutorial for running [`CDCgov/MIRA-NF`](https://github.com/CDCgov/MIRA-NF) with `Flu-ONT` data.
+# MIRA-NF
 
-In this tutorial you will learn how to:
-- launch Nextflow pipeline
-- use containers in Nextflow
-- prepare samplesheet for MIRA-NF
-- prepare expected barcode folder structure for MIRA-NF for ONT data  
+## 🎯 Learning goals
 
+By the end of this practical, you should be able to:
 
-MIRA-NF supports `Flu-ONT` and expects ONT input in a samplesheet with columns `barcode,sample_id,sample_type`, plus a run directory containing the samplesheet and the FASTQ folder structure. The project docs also state that `--input`, `--outdir`, `--runpath`, and `--e` are required runtime parameters.
+- explain what `MIRA-NF` is used for
+- launch a Nextflow pipeline
+- run a Nextflow workflow with containers
+- prepare a MIRA-NF samplesheet
+- organize ONT FASTQ files in the barcode-based folder structure expected by MIRA-NF
+- run `MIRA-NF` on Influenza A and SARS-CoV-2 ONT data
 
 ---
 
-## 1. Requirements
+## Overview
 
-Install:
-- Nextflow
-- Singularity/Apptainer **or** Docker 
-- `fastq-dl` (or `fasterq-dump` / ENA download tools)
+In this practical, we will run [`CDCgov/MIRA-NF`](https://github.com/CDCgov/MIRA-NF) on Oxford Nanopore Technologies (ONT) sequencing data.
 
-Example with Conda / Mamba:
+`MIRA-NF` can be used for reference-based genome reconstruction and variant calling for several respiratory viruses, including **Influenza A**, **SARS-CoV-2**, and **RSV**.
+
+For ONT data, MIRA-NF expects a run directory containing:
+
+1. a `samplesheet.csv` file
+2. a `fastq_pass/` directory
+3. barcode-specific subfolders such as `barcode01`, `barcode02`, `barcode03`
+
+The expected structure looks like this:
 
 ```bash
-mamba create -n mira-nf -c conda-forge -c bioconda nextflow fastq-dl seqtk
-conda activate mira-nf
+fastq_pass/
+├── barcode01/
+│   └── sample_1.fastq.gz
+├── barcode02/
+│   └── sample_2.fastq.gz
+└── barcode03/
+    └── sample_3.fastq.gz
 ```
 
---------------------------------------------------------------------------------
+The samplesheet must contain the columns:
 
-## 2. Download a small public influenza ONT dataset
-
-A simple way is to use `fastq-dl`, which can download public FASTQ files from ENA/SRA using an accession. 
-`fastq-dl` supports SRA/ENA Study, Sample, Experiment, or Run accessions.
-
-Example accessions for a public influenza A Oxford Nanopore experiment:
-- `PRJNA1294791`
-  - Study: "Alphainfluenzavirus influenzae Genome sequencing and assembly"
-  - Number of SRA Experiments: 1
-  - Instrument: MinION (Oxford Nanopore)
-  - *Complete Genome Sequence of Avian Influenza A (H5N1) Virus Isolated from Chicken During a Recent Outbreak in Bangladesh* 
-- `PRJNA1420411`
-  - Study: "Environmental Surveillance for Assessing Pathogen Emergence (ESCAPE)"
-  - Number of SRA Experiments: 9
-  - Instrument: MinION (Oxford Nanopore)
-  - *Nanopore sequencing of Influenza A virus (H5): avian cloacal and oropharyngeal swabs*
-
-Download:
-
-```bash
-mkdir -p 1_data/sra_download
-cd 1_data/sra_download
-fastq-dl -a PRJNA1294791 --provider SRA --prefix PRJNA1294791
-fastq-dl -a PRJNA1420411 --provider SRA --prefix PRJNA1420411
-cd ..
+```
+barcode,sample_id,sample_type
 ```
 
---------------------------------------------------------------------------------
+> [!NOTE]
+> This folder structure is typical for ONT sequencing runs after basecalling and demultiplexing.
+> In this tutorial, the FASTQ files were downloaded manually, so we will create the expected structure ourselves.
 
-## 3. Prepare input directory structure for MIRA-NF
+---
+
+## 1. Create and activate a Nextflow environment
+
+To run MIRA-NF, we need Nextflow.
+
+Create and activate Conda environment containing Nextflow:
 
 ```bash
-mkdir -p fastq_pass; 
-printf "barcode,sample_id,sample_type\n" > samplesheet.csv; 
-i=1; 
-for f in *.fastq.gz; 
-  do bn=$(printf "barcode%02d" "$i"); 
-    sid=${f%.fastq.gz}; 
-    mkdir -p "fastq_pass/$bn"; 
-    mv "$f" "fastq_pass/$bn/$f"; 
-    printf "%s,%s,Test\n" "$bn" "$sid" >> samplesheet.csv; 
-    i=$((i+1)); 
+conda create -y -n nextflow -c bioconda nextflow
+conda activate nextflow
+```
+
+> [!NOTE]
+> This Conda environment installs Nextflow.
+> It does not install Singularity, Apptainer, or Docker.
+> One container engine must already be available on the system.
+
+---
+
+## 2. Prepare input directory structure for MIRA-NF
+
+### for Influenza A
+
+```bash
+# Move to the directory containing the raw IAV H3N2 FASTQ files
+cd ~/2026-Workshop-HSPA-Morocco/data/raw_data/iav_h3n2
+
+# MIRA-NF expects ONT-like input organization:
+# fastq_pass/barcodeXX/*.fastq.gz
+#
+# This structure is typically produced by ONT sequencing runs after basecalling
+# and demultiplexing. Since these example files were downloaded manually,
+# we create the expected folder structure ourselves.
+mkdir -p fastq_pass
+
+# Create the header line for the MIRA-NF samplesheet
+printf "barcode,sample_id,sample_type\n" > samplesheet.csv
+
+# Assign each FASTQ file to an artificial barcode folder and add it to the samplesheet.
+#
+# The barcode names used here, such as barcode01, barcode02, etc., are arbitrary.
+# They do not represent real sequencing barcodes in this tutorial dataset.
+# We use them only to reproduce the folder structure expected by MIRA-NF.
+i=1
+ 
+for f in *.fastq.gz
+do
+    # Create a barcode name with two digits, for example barcode01
+    bn=$(printf "barcode%02d" "$i")
+
+    # Use the FASTQ filename, without the .fastq.gz extension, as the sample ID
+    sid=${f%.fastq.gz}
+
+    # Create the barcode-specific folder inside fastq_pass
+    mkdir -p "fastq_pass/$bn"
+
+    # Move the FASTQ file into the corresponding barcode folder
+    mv "$f" "fastq_pass/$bn/$f"
+
+    # Add one line to samplesheet.csv:
+    # barcode name, sample ID, and sample type
+    printf "%s,%s,Test\n" "$bn" "$sid" >> samplesheet.csv
+
+    # Increase the barcode counter
+    i=$((i+1))
 done
 ```
 
---------------------------------------------------------------------------------
-
-## 5. Run MIRA-NF
+Check the resulting structure:
 
 ```bash
-cd ..
-mkdir -p 2_analysis/1_mira-nf
+tree .
+```
+
+Check the samplesheet:
+
+```bash
+cat samplesheet.csv
+```
+
+> [!TIP]
+> The barcode names used here, such as barcode01, barcode02, and barcode03, are artificial.
+> They do not represent real sequencing barcodes in this tutorial dataset.
+> We use them only to reproduce the folder structure expected from an ONT sequencing run.
+
+### for SARS-CoV-2
+
+```bash
+# Move to the directory containing the raw SARS-CoV-2 FASTQ files
+cd ~/2026-Workshop-HSPA-Morocco/data/raw_data/sc2
+
+# MIRA-NF expects ONT-like input organization:
+# fastq_pass/barcodeXX/*.fastq.gz
+#
+# This structure is typically produced by ONT sequencing runs after basecalling
+# and demultiplexing. Since these example files were downloaded manually,
+# we create the expected folder structure ourselves.
+mkdir -p fastq_pass
+
+# Create the header line for the MIRA-NF samplesheet
+printf "barcode,sample_id,sample_type\n" > samplesheet.csv
+
+# Assign each FASTQ file to an artificial barcode folder and add it to the samplesheet.
+#
+# The barcode names used here, such as barcode01, barcode02, etc., are arbitrary.
+# They do not represent real sequencing barcodes in this tutorial dataset.
+# We use them only to reproduce the folder structure expected by MIRA-NF.
+i=1
+ 
+for f in *.fastq.gz
+do
+    # Create a barcode name with two digits, for example barcode01
+    bn=$(printf "barcode%02d" "$i")
+
+    # Use the FASTQ filename, without the .fastq.gz extension, as the sample ID
+    sid=${f%.fastq.gz}
+
+    # Create the barcode-specific folder inside fastq_pass
+    mkdir -p "fastq_pass/$bn"
+
+    # Move the FASTQ file into the corresponding barcode folder
+    mv "$f" "fastq_pass/$bn/$f"
+
+    # Add one line to samplesheet.csv:
+    # barcode name, sample ID, and sample type
+    printf "%s,%s,Test\n" "$bn" "$sid" >> samplesheet.csv
+
+    # Increase the barcode counter
+    i=$((i+1))
+done
+```
+
+Check the resulting structure:
+
+```bash
+tree .
+```
+
+Check the samplesheet:
+
+```bash
+cat samplesheet.csv
+```
+
+> [!WARNING]
+> Run the folder-preparation command only **once** per dataset.
+> The loop moves the FASTQ files from the current directory into `fastq_pass/barcodeXX/`.
+> If you run it again, there may be no `*.fastq.gz` files left in the top-level directory, and the new samplesheet may be empty.
+
+---
+
+## 3. Run MIRA-NF
+
+
+### for Influenza A
+
+```bash
+# Move back to the workshop repository
+cd ~/2026-Workshop-HSPA-Morocco
+
+# Create an output directory for the MIRA-NF IAV H3N2 run
+mkdir -p analysis/mira-nf_iav_h3n2
 ```
 
 ```bash
 nextflow run CDCgov/MIRA-NF -r v2.0.0 \
-  -profile singularity,slurm \
-  --input "$PWD/1_data/sra_download/samplesheet.csv" \
-  --runpath "$PWD/1_data/sra_download" \
-  --outdir "$PWD/2_analysis/1_mira-nf/results" \
+  -profile singularity,local \
+  --input "$PWD/data/raw_data/iav_h3n2/samplesheet.csv" \
+  --runpath "$PWD/data/raw_data/iav_h3n2" \
+  --outdir "$PWD/analysis/mira-nf_iav_h3n2/results" \
   --e Flu-ONT \
   --check_version false
 ```
 
+> [!NOTE]
+> The option `--e Flu-ONT` tells MIRA-NF to run the Influenza ONT workflow.
 
-Notes:
-- Use **absolute paths** for `--input`, `--runpath`, and `--outdir`. Relative paths can resolve incorrectly and cause missing-file errors.
-- `--check_version false` is useful on systems with restricted internet access.
-- Pinning `-r v2.0.0` improves reproducibility.
-- When running the pipeline on slurm you can set `-profile singularity,slurm`.
-- When running MIRA-NF with `--nextclade true` it will automatically run nextclade for passing samples. However, for influenza, Nextclade only supports seasonal human H1N1 and H3N2 at this time.
+### for SARS-CoV-2
 
---------------------------------------------------------------------------------
+```bash
+# Move back to the workshop repository
+cd ~/2026-Workshop-HSPA-Morocco
+
+# Create an output directory for the MIRA-NF SARS-CoV-2 run
+mkdir -p analysis/mira-nf_sc2
+```
+
+```bash
+nextflow run CDCgov/MIRA-NF -r v2.0.0 \
+  -profile singularity,local \
+  --input "$PWD/data/raw_data/sc2/samplesheet.csv" \
+  --runpath "$PWD/data/raw_data/sc2" \
+  --outdir "$PWD/analysis/mira-nf_sc2/results" \
+  --e SC2-Whole-Genome-ONT \
+  --check_version false
+```
+
+> [!NOTE]
+> The option `--e SC2-Whole-Genome-ONT` tells MIRA-NF to run the SARS-CoV-2 ONT workflow.
+
+---
+
+> [!IMPORTANT]
+> When splitting long commands across multiple lines in Bash,
+> the backslash `\` must be the final character on the line.
+> **Do not add spaces after it**, otherwise the command will break.
+
+---
+
+> [!NOTE]
+> - Use **absolute paths** for `--input`, `--runpath`, and `--outdir`. Relative paths can resolve incorrectly and cause missing-file errors.
+> - `--check_version false` is useful on systems with restricted internet access.
+> - Pinning the pipeline with `-r v2.0.0` improves reproducibility.
+> - When running the pipeline on slurm you can set `-profile singularity,slurm`.
+> - When running MIRA-NF with `--nextclade true`, Nextclade will be run for passing samples. For influenza, interpret this carefully: default Nextclade influenza support focuses on Influenza A/B HA datasets such as H3N2 and H1N1pdm, not every possible influenza segment or subtype.
+
+---
+
+## 📌 Summary
+
+In this practical, you prepared ONT-style input folders and samplesheets for two datasets:
+
+| Dataset | Workflow | Input directory | Output directory |
+|---|---|---|---|
+| Influenza A H3N2 | `Flu-ONT` | `data/raw_data/iav_h3n2` | `analyses/day_03/mira-nf/iav_h3n2/results` |
+| SARS-CoV-2 | `SC2-Whole-Genome-ONT` | `data/raw_data/sc2` | `analyses/day_03/mira-nf/sc2/results` |
+
+You used:
+
+| Command / option | Purpose |
+|---|---|
+| `nextflow run` | Launch a Nextflow pipeline |
+| `-profile singularity,local` | Run with Singularity on the local machine |
+| `--input` | Path to the MIRA-NF samplesheet |
+| `--runpath` | Path to the ONT run directory containing `fastq_pass/` |
+| `--outdir` | Output directory for pipeline results |
+| `--e` | MIRA-NF experiment/workflow type |
+| `--check_version false` | Skip online version checking |
+
+---
+
+[⬅ Back to Day 03 overview](README.md)
+
+[⬅ Back to main page](../README.md)
