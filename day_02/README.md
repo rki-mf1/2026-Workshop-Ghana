@@ -2,7 +2,7 @@
 
 Day 02 focuses on good practices for managing bioinformatics projects, software environments, and sequencing data. You will learn how to organize input data, keep analyses reproducible, and use common tools for assessing sequencing read quality.
 
-We will also introduce software management using **Conda** and **containers**, followed by practical read quality control using **fastp** for short-read data and **NanoPlot** for Oxford Nanopore long-read data.
+We will also introduce software management using **Conda** and **containers**, followed by practical read quality control using **fastp**.
 
 ## 🎯 Learning goals
 
@@ -16,7 +16,6 @@ By the end of Day 02, you should be able to:
 - understand the basic idea of containers
 - run quality control on sequencing reads
 - use `fastp` to assess and filter short-read sequencing data
-- use `NanoPlot` to assess Oxford Nanopore sequencing data
 - interpret basic read quality metrics and QC plots
 
 ## 💻 Practicals
