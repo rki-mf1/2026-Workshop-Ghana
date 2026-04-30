@@ -50,7 +50,7 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 | 10:45 - 11:00 | ☕ Break                                   |
 | 11:00 - 12:00 | Hands-On: Mapping with minimap2            |
 | 12:00 - 13:00 | 🍽️ Lunch Break                             |
-| 13:00 - 13:30 | 🌟 Special Talk by Marie Lataretu <br>"Integrated Genomic Surveillance in Germany - A Spotlight on Viruses and Pipelines" |
+| 13:00 - 13:30 | 🌟 Special Talk by Marie Lataretu <br>"Integrated Genomic Surveillance in Germany - A Spotlight on Viruses and Pipelines" |
 | 13:30 - 14:45 | Talk: Variant Calling and MIRA-NF          |
 | 14:45 - 15:00 | ☕ Break                                   |
 | 15:00 - 16:45 | Hands-On: MIRA-NF                          |
