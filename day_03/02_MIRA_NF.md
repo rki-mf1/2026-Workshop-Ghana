@@ -217,6 +217,7 @@ mkdir -p analysis/mira-nf_iav_h3n2
 ```bash
 nextflow run CDCgov/MIRA-NF -r v2.0.0 \
   -profile singularity,local \
+  -c "$PWD/configs/mira_lowmem_3gb.config" \
   --input "$PWD/data/raw_data/iav_h3n2/samplesheet.csv" \
   --runpath "$PWD/data/raw_data/iav_h3n2" \
   --outdir "$PWD/analysis/mira-nf_iav_h3n2/results" \
@@ -240,6 +241,7 @@ mkdir -p analysis/mira-nf_sc2
 ```bash
 nextflow run CDCgov/MIRA-NF -r v2.0.0 \
   -profile singularity,local \
+  -c "$PWD/configs/mira_lowmem_3gb.config" \
   --input "$PWD/data/raw_data/sc2/samplesheet.csv" \
   --runpath "$PWD/data/raw_data/sc2" \
   --outdir "$PWD/analysis/mira-nf_sc2/results" \
