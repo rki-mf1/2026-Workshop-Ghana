@@ -53,9 +53,16 @@ barcode,sample_id,sample_type
 
 ## 1. Create and activate a Nextflow environment
 
-To run MIRA-NF, we need Nextflow.
+To run MIRA-NF, we need:
 
-Create and activate Conda environment containing Nextflow:
+- Java 17 or newer
+- Nextflow
+- Singularity/Apptainer or Docker
+- Git
+
+In this tutorial, we assume that `git` and either `singularity`/`apptainer` or `docker` are already installed on your computer.
+
+We will create a Conda environment for Nextflow and Java.
 
 ```bash
 conda create -y -n nextflow -c conda-forge -c bioconda nextflow=25.10.4 openjdk=17
@@ -63,9 +70,10 @@ conda activate nextflow
 ```
 
 > [!NOTE]
-> This Conda environment installs Nextflow.
+> This Conda environment installs Nextflow and Java.
 > It does not install Singularity, Apptainer, or Docker.
 > One container engine must already be available on the system.
+> If you are using Docker, make sure Docker is running before starting the pipeline.
 
 ---
 
