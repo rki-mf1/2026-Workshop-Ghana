@@ -2,7 +2,7 @@
 
 ## 📝 Pre-Training Assessment
 
-Before we begin with the training, please fill in this [Pre-Training Assesment](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Pre-and-Post-Training-Assessments).
+Before we begin with the training, please fill in this [Pre-Training Assessment](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Pre-and-Post-Training-Assessments).
 
 ## 🎯 Learning goals
 
