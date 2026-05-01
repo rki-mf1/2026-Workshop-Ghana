@@ -70,8 +70,8 @@ conda env create -n fastp -f ~/2026-Workshop-HSPA-Morocco/envs/fastp.yaml
 
 Here, we use two important parameters:
 
-- `-n` fastp` gives the new environment the name **fastp**
-- `-f` envs/fastp.yaml` tells Conda which YAML recipe file to use
+- `-n fastp` gives the new environment the name **fastp**
+- `-f envs/fastp.yaml` tells Conda which YAML recipe file to use
 
 ---
 
