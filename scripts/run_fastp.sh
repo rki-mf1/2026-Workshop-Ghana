@@ -1,7 +1,9 @@
+# usage: bash scripts/run_fastp.sh data/raw_data/iav_h3n2 analyses/day_02/fastp_batch
+
 source $(conda info --base)/etc/profile.d/conda.sh
 
-input='/home/mf1/nambi24/testdata'
-output='/home/mf1/nambi24/testdata/out'
+input="$1"
+output="$2"
 
 conda activate fastp
 
