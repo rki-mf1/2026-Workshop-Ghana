@@ -1,6 +1,6 @@
 # Day 01 — Linux Introduction
 
-## 📝 Pre-Training Assesment
+## 📝 Pre-Training Assessment
 
 Before we begin with the training, please fill in this [Pre-Training Assesment](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Pre-and-Post-Training-Assessments).
 
