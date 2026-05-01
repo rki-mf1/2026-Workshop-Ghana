@@ -58,7 +58,7 @@ To run MIRA-NF, we need Nextflow.
 Create and activate Conda environment containing Nextflow:
 
 ```bash
-conda create -y -n nextflow -c bioconda nextflow=23.10.0
+conda create -y -n nextflow -c conda-forge -c bioconda nextflow=25.10.4 openjdk=17
 conda activate nextflow
 ```
 
