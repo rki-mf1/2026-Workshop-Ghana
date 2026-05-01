@@ -53,9 +53,9 @@ Please make sure you know:
 
 Please fill in this [overall training evaluation](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Overall-Training-Evaluation) at the end of the training.
 
-## 📝 Post-Training Assesment
+## 📝 Post-Training Assessment
 
-At the very end of the training, please fill in this [Post-Training Assesment](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Pre-and-Post-Training-Assessments).
+At the very end of the training, please fill in this [Post-Training Assessment](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Pre-and-Post-Training-Assessments).
 
 ---
 
