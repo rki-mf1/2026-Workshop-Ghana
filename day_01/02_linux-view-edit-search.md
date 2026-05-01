@@ -11,7 +11,7 @@ By the end of this lesson, you should be able to:
 - search text with `grep`
 - combine commands using pipes (`|`)
 - extract columns from tabular files
-- write and run a Bash scripts
+- write and run Bash scripts
 
 ## Before you start
 
