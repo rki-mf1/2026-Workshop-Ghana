@@ -325,6 +325,10 @@ You also learned how to generate and compare HTML reports.
 
 These QC reports help you decide whether your reads are suitable for downstream steps such as mapping, genome reconstruction, and variant calling.
 
+> [!NOTE]
+> In this workshop, `fastp` is used mainly to demonstrate general FASTQ quality-control concepts.
+> For dedicated long-read ONT preprocessing, tools such as `fastplong`, `NanoPlot`, `pycoQC`, or `chopper` may be more appropriate depending on the workflow.
+
 ---
 
 [⬅ Back to Day 02 overview](README.md)
