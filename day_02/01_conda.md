@@ -34,7 +34,7 @@ First, let’s check which Conda environments are already available.
 ```bash
 conda env list
 # or
-conda env list
+conda info --envs
 ```
 You should see a list of environments. The **currently active environment** is marked with an asterisk (`*`).
 
@@ -71,7 +71,7 @@ conda env create -n fastp -f ~/2026-Workshop-HSPA-Morocco/envs/fastp.yaml
 Here, we use two important parameters:
 
 - `-n` fastp` gives the new environment the name **fastp**
-- `-f` day_02/envs/fastp.yaml` tells Conda which YAML recipe file to use
+- `-f` envs/fastp.yaml` tells Conda which YAML recipe file to use
 
 ---
 
