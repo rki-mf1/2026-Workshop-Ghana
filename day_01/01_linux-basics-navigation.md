@@ -118,7 +118,7 @@ pwd
 Now try the following:
 
 ```bash
-cd day_01
+cd data
 pwd
 
 cd ..
@@ -127,7 +127,7 @@ pwd
 cd ~
 pwd
 
-cd ~/2026-Workshop-HSPA-Morocco/day_01
+cd ~/2026-Workshop-HSPA-Morocco/data
 pwd
 
 cd -
@@ -147,7 +147,7 @@ pwd
 
 An **absolute path** starts from the filesystem root `/`.
 
-Example: `/home/username/2026-Workshop-HSPA-Morocco/day_01`
+Example: `/home/username/2026-Workshop-HSPA-Morocco/data`
 
 A **relative path** starts from where you are right now.
 
@@ -155,9 +155,9 @@ Example workflow:
 
 ```bash
 cd ~/2026-Workshop-HSPA-Morocco
-ls day_01
+ls data
 
-cd day_01
+cd data
 ls .
 ls ..
 ```
@@ -168,13 +168,13 @@ Run these commands and explain why they work:
 
 ```bash
 cd ~/2026-Workshop-HSPA-Morocco
-ls day_01
+ls data
 
-cd day_01
+cd data
 ls ../day_02
 
 cd ..
-cd ./day_01
+cd ./data
 ```
 
 ---
@@ -408,7 +408,7 @@ One possible solution:
 
 ```bash
 # 1.
-cd ~/2026-Workshop-HSPA-Morocco/day_01/scratch
+cd ~/2026-Workshop-HSPA-Morocco/scratch
 mkdir project_demo
 cd project_demo
 
