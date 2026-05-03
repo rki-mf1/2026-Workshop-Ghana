@@ -2,7 +2,7 @@
 
 Day 02 focuses on good practices for managing bioinformatics projects, software environments, and sequencing data. You will learn how to organize input data, keep analyses reproducible, and use common tools for assessing sequencing read quality.
 
-We will also introduce software management using **Conda** and **containers**, followed by practical read quality control using **fastp**.
+We will also introduce software management using **Conda** and **containers**, followed by practical read quality control using **fastplong**.
 
 ## 🎯 Learning goals
 
@@ -15,14 +15,14 @@ By the end of Day 02, you should be able to:
 - install bioinformatics tools with Conda
 - understand the basic idea of containers
 - run quality control on sequencing reads
-- use `fastp` to assess and filter short-read sequencing data
+- use `fastplong` to assess and filter long-read sequencing data
 - interpret basic read quality metrics and QC plots
 
 ## 💻 Practicals
 
 1. [Software Management with Conda](./01_conda.md)
 2. [Downloading Datasets](./02_downloading_datasets.md)
-3. [Quality Control with `fastp`](./03_fastp.md)
+3. [Quality Control with `fastplong`](./03_fastplong.md)
 
 ## 👩‍🏫 Slides
 
