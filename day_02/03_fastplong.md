@@ -48,8 +48,8 @@ cd ~/2026-Workshop-HSPA-Morocco
 Create a working directory for this practical.
 
 ```bash
-mkdir -p day_02/fastp_qc
-cd day_02/fastp_qc
+mkdir -p analysis/fastplong
+cd analysis/fastplong
 ```
 
 Create directories for input reads and filtered output files.
@@ -64,7 +64,7 @@ mkdir -p filtered_reads/by_quality
 Copy one FASTQ file into the `input` directory.
 
 ```bash
-cp ../../data/raw_data/iav_h3n2/SRR32055876.fastq.gz input/
+cp ~/2026-Workshop-HSPA-Morocco/data/raw_data/iav_h3n2/SRR32055876.fastq.gz input/
 ```
 
 Check that the file was copied successfully.
@@ -109,9 +109,9 @@ fastplong \
   --verbose \
   --dont_overwrite \
   --in input/SRR32055876.fastq.gz \
-  --out filtered_reads/default_params/SRR32055876.fastp.fastq.gz \
-  --html filtered_reads/default_params/SRR32055876.fastp.html \
-  --json filtered_reads/default_params/SRR32055876.fastp.json
+  --out filtered_reads/default_params/SRR32055876_fastplong.fastq.gz \
+  --html filtered_reads/default_params/SRR32055876_fastplong.html \
+  --json filtered_reads/default_params/SRR32055876_fastplong.json
 ```
 
 This command creates:
@@ -131,7 +131,7 @@ ls -lh filtered_reads/default_params/
 The HTML report can be opened with a web browser.
 
 ```bash
-firefox filtered_reads/default_params/SRR32055876.fastp.html
+firefox filtered_reads/default_params/SRR32055876_fastplong.html
 ```
 
 Look at the report and try to answer:
@@ -172,9 +172,9 @@ fastplong \
   --dont_overwrite \
   --length_required 500 \
   --in input/SRR32055876.fastq.gz \
-  --out filtered_reads/by_length/SRR32055876.min500.fastq.gz \
-  --html filtered_reads/by_length/SRR32055876.min500.fastp.html \
-  --json filtered_reads/by_length/SRR32055876.min500.fastp.json
+  --out filtered_reads/by_length/SRR32055876_min500.fastq.gz \
+  --html filtered_reads/by_length/SRR32055876_min500_fastplong.html \
+  --json filtered_reads/by_length/SRR32055876_min500_fastplong.json
 ```
 
 Check the output files.
@@ -186,7 +186,7 @@ ls -lh filtered_reads/by_length/
 Open the report.
 
 ```bash
-firefox filtered_reads/by_length/SRR32055876.min500.fastp.html
+firefox filtered_reads/by_length/SRR32055876_min500_fastplong.html
 ```
 
 ### 💬 Discussion
@@ -217,9 +217,9 @@ fastplong \
   --dont_overwrite \
   --mean_qual 10 \
   --in input/SRR32055876.fastq.gz \
-  --out filtered_reads/by_quality/SRR32055876.q10.fastq.gz \
-  --html filtered_reads/by_quality/SRR32055876.q10.fastp.html \
-  --json filtered_reads/by_quality/SRR32055876.q10.fastp.json
+  --out filtered_reads/by_quality/SRR32055876_q10.fastq.gz \
+  --html filtered_reads/by_quality/SRR32055876_q10_fastplong.html \
+  --json filtered_reads/by_quality/SRR32055876_q10_fastplong.json
 ```
 
 ## 8. Try different quality thresholds
@@ -234,9 +234,9 @@ fastplong \
   --dont_overwrite \
   --mean_qual 7 \
   --in input/SRR32055876.fastq.gz \
-  --out filtered_reads/by_quality/SRR32055876.q7.fastq.gz \
-  --html filtered_reads/by_quality/SRR32055876.q7.fastp.html \
-  --json filtered_reads/by_quality/SRR32055876.q7.fastp.json
+  --out filtered_reads/by_quality/SRR32055876_q7.fastq.gz \
+  --html filtered_reads/by_quality/SRR32055876_q7_fastplong.html \
+  --json filtered_reads/by_quality/SRR32055876_q7_fastplong.json
 ```
 
 ```bash
@@ -245,9 +245,9 @@ fastplong \
   --dont_overwrite \
   --mean_qual 15 \
   --in input/SRR32055876.fastq.gz \
-  --out filtered_reads/by_quality/SRR32055876.q15.fastq.gz \
-  --html filtered_reads/by_quality/SRR32055876.q15.fastp.html \
-  --json filtered_reads/by_quality/SRR32055876.q15.fastp.json
+  --out filtered_reads/by_quality/SRR32055876_q15.fastq.gz \
+  --html filtered_reads/by_quality/SRR32055876_q15_fastplong.html \
+  --json filtered_reads/by_quality/SRR32055876_q15_fastplong.json
 ```
 
 ### 💬 Discussion
