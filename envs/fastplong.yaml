@@ -1,8 +1,8 @@
-name: fastp
+name: fastplong
 
 channels:
   - conda-forge
   - bioconda
 
 dependencies:
-  - fastp=1.3.3
+  - fastplong=0.4.1
