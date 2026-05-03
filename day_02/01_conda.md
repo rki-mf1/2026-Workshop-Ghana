@@ -21,9 +21,9 @@ Bioinformatics tools often depend on very specific software versions. Installing
 
 This is where **Conda environments** are useful.
 
-A Conda environment is like a separate software box. Each environment can contain a specific set of tools and versions. For example, one environment may contain `bcftools`, another may contain `fastp`, and another may contain tools for genome assembly.
+A Conda environment is like a separate software box. Each environment can contain a specific set of tools and versions. For example, one environment may contain `bcftools`, another may contain `fastplong`, and another may contain tools for genome assembly.
 
-In this practical, we will create and use a Conda environment for `fastp`.
+In this practical, we will create and use a Conda environment for `fastplong`.
 
 ---
 
@@ -52,10 +52,10 @@ base                  *  /home/user/miniconda3
 
 Conda environments can be described using a [YAML](https://en.wikipedia.org/wiki/YAML) file. This file acts like a recipe: it tells Conda which software should be installed.
 
-We will first inspect the environment file for `fastp`. This recipe tells Conda to create an environment containing `fastp`.
+We will first inspect the environment file for `fastplong`. This recipe tells Conda to create an environment containing `fastplong`.
 
 ```bash
-cat ~/2026-Workshop-HSPA-Morocco/envs/fastp.yaml
+cat ~/2026-Workshop-HSPA-Morocco/envs/fastplong.yaml
 ```
 
 ---
@@ -65,13 +65,13 @@ cat ~/2026-Workshop-HSPA-Morocco/envs/fastp.yaml
 Now we can create the environment.
 
 ```bash
-conda env create -n fastp -f ~/2026-Workshop-HSPA-Morocco/envs/fastp.yaml
+conda env create -n fastplong -f ~/2026-Workshop-HSPA-Morocco/envs/fastplong.yaml
 ```
 
 Here, we use two important parameters:
 
-- `-n fastp` gives the new environment the name **fastp**
-- `-f envs/fastp.yaml` tells Conda which YAML recipe file to use
+- `-n fastplong` gives the new environment the name **fastplong**
+- `-f envs/fastplong.yaml` tells Conda which YAML recipe file to use
 
 ---
 
@@ -82,37 +82,37 @@ Now list the available Conda environments again.
 ```bash
 conda env list
 ```
-You should now see an environment called **fastp**.
+You should now see an environment called **fastplong**.
 
 🎉 Congratulations! You have created your first Conda environment in this workshop.
 
 ---
 
-### 5. Try running fastp before activating the environment
+### 5. Try running fastplong before activating the environment
 
 The `conda activate` command lets you switch to a specific environment. 
 You can use any of the environments that were listed in the output of `conda env list` command. 
 Once you activate a environment you will be able to use the software that is installed in that environment.
 
 ```bash
-# try to use fastp
-fastp
+# try to use fastplong
+fastplong
 ```
 
-Before activating the environment, let’s try running fastp.
+Before activating the environment, let’s try running fastplong.
 
 ```bash
-fastp
+fastplong
 ```
 
 You may see an error message similar to this:
 
 ```bash
-Command 'fastp' not found
+Command 'fastplong' not found
 ```
 This is expected.
 
-The software was installed inside the fastp Conda environment, but that environment is not active yet.
+The software was installed inside the fastplong Conda environment, but that environment is not active yet.
 
 ---
 
@@ -121,31 +121,31 @@ The software was installed inside the fastp Conda environment, but that environm
 To use software installed inside a Conda environment, we first need to activate it.
 
 ```bash
-conda activate fastp
+conda activate fastplong
 ```
 
 Your terminal prompt may change and show the active environment name:
 
 ```bash
-(fastp) user@computer:~$
+(fastplong) user@computer:~$
 ```
 
-Now try running fastp again.
+Now try running fastplong again.
 
 ```bash
-fastp
+fastplong
 ```
 
-This time, you should see the fastp help message instead of an error.
+This time, you should see the fastplong help message instead of an error.
 
 ---
 
-### 7. Check which version of fastp is installed
+### 7. Check which version of fastplong is installed
 
 It is good practice to check software versions, especially when working on reproducible analyses.
 
 ```bash
-fastp --version
+fastplong --version
 ```
 
 ---
@@ -173,9 +173,9 @@ conda deactivate
 Try to answer the following questions:
 
 - Which command lists all available Conda environments?
-- Which command activates the `fastp` environment?
-- Why did `fastp` not work before activating the environment?
-- Which command shows the installed version of `fastp`?
+- Which command activates the `fastplong` environment?
+- Why did `fastplong` not work before activating the environment?
+- Which command shows the installed version of `fastplong`?
 
 ### 📌 Quick reference
 
@@ -184,8 +184,8 @@ In this practical, you used the following Conda commands:
 | Command | Purpose |
 |---|---|
 | `conda env list` | List available Conda environments |
-| `conda env create -n fastp -f day_02/envs/fastp.yaml` | Create a new environment from a YAML file |
-| `conda activate fastp` | Activate the `fastp` environment |
+| `conda env create -n fastplong -f day_02/envs/fastplong.yaml` | Create a new environment from a YAML file |
+| `conda activate fastplong` | Activate the `fastplong` environment |
 | `conda list` | List installed packages in the active environment |
 | `conda deactivate` | Leave the active environment |
 
