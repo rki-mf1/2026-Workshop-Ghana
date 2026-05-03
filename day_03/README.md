@@ -29,8 +29,8 @@ By the end of Day 03, you should be able to:
 
 ## 👩‍🏫 Slides
 
-- [Mapping and Reference-Based Assembly](https://docs.google.com/presentation/d/1v6zL6iEzGx5J7rtEcjGziaafWSFiwWpGT1CKWs94xfE)
-- [Variant Calling](https://docs.google.com/presentation/d/1fQEHHBpG6SRKNlKSIgZCDFn1uWXzjf9TxwdHP9aZ1LA)
+- [Reference-Based Assembly](https://docs.google.com/presentation/d/1v6zL6iEzGx5J7rtEcjGziaafWSFiwWpGT1CKWs94xfE)
+- [MIRA-NF](https://docs.google.com/presentation/d/1fQEHHBpG6SRKNlKSIgZCDFn1uWXzjf9TxwdHP9aZ1LA)
 
 ## 📝 Evaluation
 
