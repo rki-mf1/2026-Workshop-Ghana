@@ -36,9 +36,9 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 | 11:00 - 12:00 | Hands-On: Software Management with Conda |
 | 12:00 - 13:00 | 🍽️ Lunch Break                           |
 | 13:00 - 13:30 | NGS Introduction                         |
-| 13:30 - 14:00 | Talk: QC using fastp                     |
+| 13:30 - 14:00 | Talk: QC using fastplong                     |
 | 14:00 - 14:30 | ☕ Break                                 |
-| 14:30 - 16:45 | Hands-On: QC using fastp                 |
+| 14:30 - 16:45 | Hands-On: QC using fastplong                 |
 | 16:45 - 17:00 | Recap & Daily Feedback                   |
 
 ### [Day 03 | 2026-05-06 | Wednesday](day_03/README.md)
