@@ -38,6 +38,8 @@ pwd
 
 ## 1. Working with `.tar.gz` archives
 
+![tar.gz](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhkgOCjTC1nwiLFwYZjQ7IZzfxKGlMoU_AnHkawHGDeasDLthqgdNmQbE4lLePalNpEM12ooVLOWKPfY4IQ0F8UUkhAr8fkRVt-sO4R6KmDI-pM_ulAMIksmg71AVXcENnUNDKy-kUOocQ/s1600/tar-gzip.jpg)
+
 *What is a `.tar.gz` file?*
 
 In bioinformatics we often work with large datasets and collections of many related files. To make them easier to share and to reduce their size, these files are frequently packaged into `.tar.gz` archives.
