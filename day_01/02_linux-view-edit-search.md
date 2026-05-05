@@ -54,7 +54,6 @@ When combined, `.tar.gz` means:
 We prepared few of them in `data/tutorial_data`. First, copy them in your current working directory:
 
 ```bash
-# copy it to your current working directory (~/2026-Workshop-HSPA-Morocco/day_01/scratch_2)
 cp ~/2026-Workshop-HSPA-Morocco/data/tutorial_data/*.tar.gz .
 ```
 
