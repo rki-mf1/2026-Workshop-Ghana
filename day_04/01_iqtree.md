@@ -83,15 +83,15 @@ mafft --version
 Create a clean directory for this practical.
 
 ```bash
-mkdir -p analyses/day_04/iqtree/input
-mkdir -p analyses/day_04/iqtree/alignment
-mkdir -p analyses/day_04/iqtree/results
+mkdir -p analyses/iqtree/input
+mkdir -p analyses/iqtree/alignment
+mkdir -p analyses/iqtree/results
 ```
 
 Check the directory structure.
 
 ```bash
-ls -R analyses/day_04/iqtree
+ls -R analyses/iqtree
 ```
 
 ---
@@ -120,13 +120,13 @@ Copy the consensus FASTA files into the input directory.
 
 ```bash
 # Replace this example path with the path to your own consensus FASTA files
-cp path/to/consensus/*.fasta analyses/day_04/iqtree/input/
+cp path/to/consensus/*.fasta analyses/iqtree/input/
 ```
 
 Check how many sequences you have.
 
 ```bash
-grep -c "^>" analyses/day_04/iqtree/input/*.fasta
+grep -c "^>" analyses/iqtree/input/*.fasta
 ```
 
 > [!IMPORTANT]
@@ -145,19 +145,19 @@ grep -c "^>" analyses/day_04/iqtree/input/*.fasta
 IQ-TREE works on one alignment file. Before alignment, we first combine all input sequences into one FASTA file.
 
 ```bash
-cat analyses/day_04/iqtree/input/*.fasta > analyses/day_04/iqtree/input/consensus_sequences.fasta
+cat analyses/iqtree/input/*.fasta > analyses/iqtree/input/consensus_sequences.fasta
 ```
 
 Check how many sequences are in the combined file.
 
 ```bash
-grep -c "^>" analyses/day_04/iqtree/input/consensus_sequences.fasta
+grep -c "^>" analyses/iqtree/input/consensus_sequences.fasta
 ```
 
 Inspect the sequence names.
 
 ```bash
-grep "^>" analyses/day_04/iqtree/input/consensus_sequences.fasta
+grep "^>" analyses/iqtree/input/consensus_sequences.fasta
 ```
 
 ---
@@ -179,14 +179,14 @@ awk '
   {
     print
   }
-' analyses/day_04/iqtree/input/consensus_sequences.fasta \
-  > analyses/day_04/iqtree/input/consensus_sequences.clean.fasta
+' analyses/iqtree/input/consensus_sequences.fasta \
+  > analyses/iqtree/input/consensus_sequences.clean.fasta
 ```
 
 Check the cleaned names.
 
 ```bash
-grep "^>" analyses/day_04/iqtree/input/consensus_sequences.clean.fasta
+grep "^>" analyses/iqtree/input/consensus_sequences.clean.fasta
 ```
 
 ---
@@ -196,15 +196,15 @@ grep "^>" analyses/day_04/iqtree/input/consensus_sequences.clean.fasta
 Even if sequences were produced by reference-based assembly, we still prepare a multiple sequence alignment before phylogenetic analysis.
 
 ```bash
-mafft --auto analyses/day_04/iqtree/input/consensus_sequences.clean.fasta \
-  > analyses/day_04/iqtree/alignment/consensus_sequences.aligned.fasta
+mafft --auto analyses/iqtree/input/consensus_sequences.clean.fasta \
+  > analyses/iqtree/alignment/consensus_sequences.aligned.fasta
 ```
 
 Check the alignment.
 
 ```bash
-grep -c "^>" analyses/day_04/iqtree/alignment/consensus_sequences.aligned.fasta
-head analyses/day_04/iqtree/alignment/consensus_sequences.aligned.fasta
+grep -c "^>" analyses/iqtree/alignment/consensus_sequences.aligned.fasta
+head analyses/iqtree/alignment/consensus_sequences.aligned.fasta
 ```
 
 > [!TIP]
@@ -219,11 +219,11 @@ Now run IQ-TREE on the alignment.
 
 ```bash
 iqtree2 \
-  -s analyses/day_04/iqtree/alignment/consensus_sequences.aligned.fasta \
+  -s analyses/iqtree/alignment/consensus_sequences.aligned.fasta \
   -m MFP \
   -B 1000 \
   -T AUTO \
-  --prefix analyses/day_04/iqtree/results/consensus_tree
+  --prefix analyses/iqtree/results/consensus_tree
 ```
 
 Meaning of the most important options:
@@ -246,7 +246,7 @@ Meaning of the most important options:
 List the output files.
 
 ```bash
-ls -lh analyses/day_04/iqtree/results/
+ls -lh analyses/iqtree/results/
 ```
 
 Important files include:
@@ -262,13 +262,13 @@ Important files include:
 Inspect the main report.
 
 ```bash
-less analyses/day_04/iqtree/results/consensus_tree.iqtree
+less analyses/iqtree/results/consensus_tree.iqtree
 ```
 
 Print the final tree.
 
 ```bash
-cat analyses/day_04/iqtree/results/consensus_tree.treefile
+cat analyses/iqtree/results/consensus_tree.treefile
 ```
 
 The `.treefile` file can be opened in tree visualization tools such as FigTree, iTOL, or the tree viewer used by your instructor.
