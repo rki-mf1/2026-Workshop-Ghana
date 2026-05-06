@@ -98,36 +98,9 @@ ls -R analyses/iqtree
 
 ## 3. Find consensus FASTA files
 
-The exact location of your consensus FASTA files depends on the previous practical.
-
-Use `find` to look for FASTA files in the analysis directories.
-
-```bash
-find analyses data -type f \( -name "*.fasta" -o -name "*.fa" -o -name "*.fna" \) 2>/dev/null | sort
-```
-
+The exact location of your consensus FASTA files depends on the previous MIRA-NF practical.
 Look for files that represent reconstructed consensus genomes, not reference genomes.
-
-Consensus files often contain words such as:
-
-```text
-consensus
-sample
-assembly
-```
-
-Copy the consensus FASTA files into the input directory.
-
-```bash
-# Replace this example path with the path to your own consensus FASTA files
-cp path/to/consensus/*.fasta analyses/iqtree/input/
-```
-
-Check how many sequences you have.
-
-```bash
-grep -c "^>" analyses/iqtree/input/*.fasta
-```
+Copy them into the input directory of iqtree `analyses/iqtree/input`.
 
 > [!IMPORTANT]
 > For phylogenetic analysis, do not mix unrelated data in the same tree.
@@ -312,8 +285,6 @@ Try to answer the following questions:
 | `conda activate iqtree` | Activate the IQ-TREE environment |
 | `mafft --auto input.fasta > aligned.fasta` | Create a multiple sequence alignment |
 | `iqtree2 -s aligned.fasta -m MFP -B 1000 -T AUTO` | Infer a maximum-likelihood tree |
-| `less file.iqtree` | Inspect the IQ-TREE report |
-| `cat file.treefile` | Print the Newick tree |
 | `grep "^>" file.fasta` | Show sequence names |
 | `grep -c "^>" file.fasta` | Count sequences |
 
