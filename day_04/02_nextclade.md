@@ -1,338 +1,280 @@
 [⬅ Back to Day 04 overview](README.md)
 
-# Genome QC and Clade Assignment with Nextclade
+# Genome QC and Clade Assignment with Nextclade Web
 
 ## 🎯 Learning goals
 
 By the end of this practical, you should be able to:
 
 - explain what Nextclade is used for
-- download a Nextclade dataset
-- run Nextclade on example sequences
-- run Nextclade on your own consensus sequences
-- inspect the main Nextclade output files
+- open and use the interactive Nextclade Web interface
+- inspect the interactive results table and phylogenetic tree view
 - interpret basic genome QC results
 - identify clade assignment, mutations, missing data, and QC warnings
+- export Nextclade results for later reporting or downstream analysis
 
 ## Overview
 
 `Nextclade` is a tool for rapid genome quality control, mutation calling, clade assignment, and phylogenetic placement.
 
-In this practical, we will use Nextclade with SARS-CoV-2 consensus sequences.
+In this practical, we will use **Nextclade Web** with influenza A and SARS-CoV-2 consensus sequences created by MIRA-NF. Nextclade Web runs in an interactive browser interface, so no command-line installation is needed for this exercise.
 
-The general workflow is:
-
-```text
-consensus FASTA files
-  ↓
-Nextclade dataset
-  ↓
-Nextclade run
-  ↓
-QC report, clade assignment, mutations, aligned sequences
-```
 
 > [!NOTE]
-> The raw reads and reference genomes are downloaded in the Day 02 tutorial:
->
-> [Downloading datasets](../day_02/02_downloading_datasets.md)
->
-> This practical assumes that you already have SARS-CoV-2 consensus sequences from the previous mapping / reference-based assembly practical.
-
----
-
-## 1. Create and activate the Conda environment
-
-Move to the workshop repository.
-
-```bash
-cd ~/2026-Workshop-HSPA-Morocco
-```
-
-Create a Conda environment with Nextclade.
-
-```bash
-conda create -y -n nextclade -c conda-forge -c bioconda nextclade
-```
-
-Activate the environment.
-
-```bash
-conda activate nextclade
-```
-
-Check that Nextclade is available.
-
-```bash
-nextclade --version
-```
-
-You can also open the help page.
-
-```bash
-nextclade --help
-nextclade run --help
-```
-
----
-
-## 2. Create a working directory
-
-Create a clean directory for this practical.
-
-```bash
-mkdir -p analyses/day_04/nextclade/input
-mkdir -p analyses/day_04/nextclade/datasets
-mkdir -p analyses/day_04/nextclade/results
-```
-
-Check the directory structure.
-
-```bash
-ls -R analyses/day_04/nextclade
-```
-
----
-
-## 3. Download the SARS-CoV-2 Nextclade dataset
-
-Nextclade requires a dataset. The dataset contains the reference genome, annotation, pathogen configuration, and other files needed for the analysis.
-
-Download the SARS-CoV-2 dataset.
-
-```bash
-nextclade dataset get \
-  --name 'nextstrain/sars-cov-2/wuhan-hu-1/orfs' \
-  --output-dir analyses/day_04/nextclade/datasets/sars-cov-2
-```
-
-Check what was downloaded.
-
-```bash
-ls -lh analyses/day_04/nextclade/datasets/sars-cov-2
-```
+> This practical assumes that you already have influenza A and/or SARS-CoV-2 consensus sequences from the previous MIRA-NF practical.
 
 > [!TIP]
-> Nextclade datasets are updated over time.
-> For real surveillance work, make sure you know which dataset version was used.
+> Nextclade Web performs the analysis in your browser on your own computer. Internet access is still needed to load the web application and the required datasets.
 
 ---
 
-## 4. Run Nextclade on example sequences
+## 1. Open Nextclade Web
 
-The downloaded dataset usually includes example sequences.
+Open the following website in a desktop browser:
 
-Run Nextclade on the example FASTA file.
+<https://clades.nextstrain.org>
 
-```bash
-nextclade run \
-  --input-dataset analyses/day_04/nextclade/datasets/sars-cov-2 \
-  --output-all analyses/day_04/nextclade/results/example_run \
-  analyses/day_04/nextclade/datasets/sars-cov-2/sequences.fasta
-```
+For this practical, use a recent version of **Firefox** or **Chrome** on a desktop computer or laptop.
 
-List the output files.
+> [!CAUTION]
+> Avoid using Safari for this practical if possible, because Nextclade Web depends on browser technologies that are better supported in Firefox and Chrome.
 
-```bash
-ls -lh analyses/day_04/nextclade/results/example_run
-```
+After the page has loaded, take a moment to identify the main parts of the interface:
 
-Important outputs include:
+- the area for loading sequence data
+- the dataset selector
+- the button for starting the analysis
+- the results table
+- the phylogenetic tree view
+- the export button
 
-| File | Purpose |
-|---|---|
-| `nextclade.tsv` | Main tabular results |
-| `nextclade.csv` | Same results in CSV format |
-| `nextclade.json` | Detailed results in JSON format |
-| `nextclade.aligned.fasta` | Aligned nucleotide sequences |
-| `nextclade.tree.nwk` | Tree output in Newick format |
-| `nextclade.errors.csv` | Errors, if any occurred |
+Do not upload your own files yet. We will first run a small example analysis.
 
 ---
 
-## 5. Inspect the Nextclade results table
+## 2. Understand the required input format
 
-Open the main TSV result file.
+Nextclade Web accepts **FASTA** sequence files.
 
-```bash
-less -S analyses/day_04/nextclade/results/example_run/nextclade.tsv
+For this practical, your input should be influenza A or SARS-CoV-2 consensus genome sequences in one of these formats:
+
+- `.fasta`
+- `.fa`
+- `.fna`
+
+Each sequence must have a FASTA header line beginning with `>` followed by the nucleotide sequence.
+
+Example:
+
+```text
+>sample_001
+NNNNATGTTTGTTTTTCTTGTTTTATTGCCACTAGTCTCTAGTCAGTGTGTTAATCTTACAAC...
+>sample_002
+NNNNATGTTTGTTTTTCTTGTTTTATTGCCACTAGTCTCTAGTCAGTGTGTTAATCTTACAAC...
 ```
 
-Show the column names.
+Nextclade Web does **not** accept FASTQ files for this workflow. Use the consensus FASTA files generated in the previous assembly practical.
 
-```bash
-head -n 1 analyses/day_04/nextclade/results/example_run/nextclade.tsv | tr '\t' '\n' | nl
-```
+> [!CAUTION]
+> Use uncompressed FASTA files. If your file ends in `.gz`, unzip it first using your file manager before using it in Nextclade Web.
 
-Show the first few result lines.
+---
 
-```bash
-head analyses/day_04/nextclade/results/example_run/nextclade.tsv
-```
+## 3. Run Nextclade with example set of your own choice
+
+Before uploading your own data, run the built-in example sequences.
+
+1. In Nextclade Web, find the sequence input area.
+2. Choose the **Examples** option.
+3. Select an example dataset.
+4. Start the analysis by clicking the run/start button.
+
+After a few seconds, Nextclade should show an interactive results table and a tree view.
+
+Questions to check:
+
+1. How many example sequences were analyzed?
+2. Which clades are assigned to the example sequences?
+3. Do all example sequences pass QC?
+4. Are there any sequences with warnings?
+
+---
+
+## 4. Selecting the dataset
+
+Nextclade requires a **reference dataset**. The dataset contains the reference genome, genome annotation, pathogen configuration, reference tree, and other files needed for analysis.
+The dataset selector can automatically suggest a compatible dataset after you provide sequences. You can also choose the dataset manually.
 
 > [!TIP]
-> Use `less -S` for wide tables.
-> Press `q` to exit.
+> Nextclade Web usually uses the latest compatible dataset available when the page is loaded. For reproducible surveillance work, record the dataset name, dataset version if shown, date of analysis, and Nextclade Web version if shown.
 
 ---
 
-## 6. Prepare your own SARS-CoV-2 consensus sequences
+## 5. Prepare your own consensus sequences
 
-Now we will prepare input FASTA files from your own Day 03 outputs.
+Now prepare the consensus FASTA files from your own Day 03 analysis.
 
-First, look for FASTA files.
+You can analyze either:
 
-```bash
-find analyses data -type f \( -name "*.fasta" -o -name "*.fa" -o -name "*.fna" \) 2>/dev/null | sort
-```
+- one FASTA file containing multiple sequences, or
+- multiple single-sample FASTA files selected together in the browser
 
-Copy your SARS-CoV-2 consensus FASTA files into the Nextclade input directory.
-
-```bash
-# Replace this example path with the path to your own SARS-CoV-2 consensus FASTA files
-cp path/to/sars-cov-2/consensus/*.fasta analyses/day_04/nextclade/input/
-```
-
-Combine the consensus FASTA files.
-
-```bash
-cat analyses/day_04/nextclade/input/*.fasta > analyses/day_04/nextclade/input/sc2_consensus_sequences.fasta
-```
-
-Check how many sequences are present.
-
-```bash
-grep -c "^>" analyses/day_04/nextclade/input/sc2_consensus_sequences.fasta
-```
-
-Inspect the sequence names.
-
-```bash
-grep "^>" analyses/day_04/nextclade/input/sc2_consensus_sequences.fasta
-```
+> [!TIP]
+> If you have many consensus FASTA files, you can select multiple files at once in the file picker. Depending on your browser, you may also be able to drag and drop a folder.
 
 ---
 
-## 7. Run Nextclade on your own sequences
+## 6. Upload your own sequences
 
-Run Nextclade on your SARS-CoV-2 consensus sequences.
+Start a new analysis so that the example sequences are not mixed with your own samples.
 
-```bash
-nextclade run \
-  --input-dataset analyses/day_04/nextclade/datasets/sars-cov-2 \
-  --output-all analyses/day_04/nextclade/results/sc2_consensus_run \
-  analyses/day_04/nextclade/input/sc2_consensus_sequences.fasta
-```
-
-List the output files.
-
-```bash
-ls -lh analyses/day_04/nextclade/results/sc2_consensus_run
-```
-
-Open the main result table.
-
-```bash
-less -S analyses/day_04/nextclade/results/sc2_consensus_run/nextclade.tsv
-```
+1. Clear the example data or use the option to start a new analysis.
+2. Drag and drop your consensus FASTA file or files into the input area.
+3. Alternatively, click **Select files** and choose the FASTA files from your computer.
+4. Wait until Nextclade has read the files.
+5. Check whether a dataset is suggested automatically.
+6. If necessary, manually select appropriate dataset.
+7. Start the analysis.
 
 ---
 
-## 8. Interpret key Nextclade outputs
+## 7. Inspect the interactive results table
 
-Nextclade reports many columns. Some useful columns to look for include:
+The results table contains one row per input sequence.
 
-| Column type | What it tells you |
+Useful columns to inspect include:
+
+| Column / field | What it tells you |
 |---|---|
 | Sequence name | Which sample the row belongs to |
 | Clade | Assigned Nextstrain clade |
-| QC status | Whether the genome passed quality checks |
+| QC status | Overall quality control category |
+| QC score | Numerical quality control score |
+| Missing data | Regions or number of bases with missing sequence |
 | Substitutions | Nucleotide changes compared with the reference |
 | Deletions | Deleted positions compared with the reference |
-| Missing data | Regions with missing bases |
-| Non-ACGTN bases | Unexpected characters in the sequence |
+| Non-ACGTN bases | Unexpected or ambiguous characters |
 | Amino acid mutations | Changes in coding regions |
 
-Use the header line to find exact column names in your Nextclade version.
+Tasks:
 
-```bash
-head -n 1 analyses/day_04/nextclade/results/sc2_consensus_run/nextclade.tsv | tr '\t' '\n' | nl
-```
-
-Print only the first few columns.
-
-```bash
-cut -f 1-10 analyses/day_04/nextclade/results/sc2_consensus_run/nextclade.tsv | column -t -s $'\t' | less -S
-```
+1. Find the sequence name column.
+2. Sort or scan the table by QC status.
+3. Identify any sequences with warnings or failed QC.
+4. Compare the clade assignments between samples.
+5. Find a sample with missing data and inspect where the missing regions occur.
+6. Inspect one sample's nucleotide substitutions and amino acid mutations.
 
 ---
 
-## 9. Check for warnings and failed samples
+## 8. Inspect QC warnings and failed samples
 
 Nextclade may report warnings or errors if sequences are incomplete, very short, contaminated, reversed, or contain too much missing data.
 
-Check whether an error file was produced.
+In the results table:
 
-```bash
-ls -lh analyses/day_04/nextclade/results/sc2_consensus_run/*error*
-```
+1. Look for the QC status column.
+2. Click or expand a sequence with a warning or poor QC result.
+3. Review the detailed QC information.
+4. Note which QC rule triggered the warning.
+5. Decide whether the sequence is suitable for reporting or should be reviewed.
 
-Open it if present.
+Common warning categories include:
 
-```bash
-cat analyses/day_04/nextclade/results/sc2_consensus_run/nextclade.errors.csv
-```
+| Warning type | Interpretation |
+|---|---|
+| Many missing bases | Low coverage, incomplete assembly, or masked regions |
+| Mixed or ambiguous bases | Possible mixed infection, sequencing noise, or unresolved bases |
+| Private mutations | Unusual mutations relative to nearby sequences |
+| Frame shifts or stop codons | Possible sequencing, assembly, or annotation issue |
+| Short sequence | Consensus genome may be incomplete |
+| Failed alignment | Input may be wrong pathogen, wrong orientation, or poor quality |
 
 > [!NOTE]
-> If no error file is present, or if the file is empty, this usually means that Nextclade did not encounter fatal errors.
+> A warning does not always mean that a sample must be discarded. It means the sample should be inspected before interpretation or reporting.
 
 ---
 
-## 10. Use the aligned FASTA output
+## 9. Explore the phylogenetic tree view
 
-Nextclade also writes aligned sequences.
+Nextclade also places sequences on a reference tree.
 
-```bash
-ls -lh analyses/day_04/nextclade/results/sc2_consensus_run/*aligned*
-```
+Use the tree view to answer:
 
-This aligned FASTA can be useful for inspection or downstream analysis.
+1. Where are your samples placed on the tree?
+2. Do samples with the same clade cluster near each other?
+3. Do any samples appear as outliers?
+4. Do samples with poor QC appear in unusual positions?
 
-```bash
-grep -c "^>" analyses/day_04/nextclade/results/sc2_consensus_run/nextclade.aligned.fasta
-```
+Click individual samples in the table and observe whether the corresponding point or branch is highlighted in the tree view.
 
 > [!CAUTION]
-> Nextclade is excellent for genome QC and clade assignment, but it does not replace a carefully designed phylogenetic analysis.
-> For phylogenetic tree inference, use a tool such as IQ-TREE on an appropriate multiple sequence alignment.
+> The Nextclade tree view is useful for rapid orientation and QC. It does not replace a carefully designed phylogenetic analysis. For formal phylogenetic inference, use a dedicated workflow and tools such as IQ-TREE on an appropriate multiple sequence alignment.
 
 ---
 
-## 🧠 Mini exercise
+## 10. Export the Nextclade results
+
+After reviewing the results, export the analysis outputs.
+
+1. Click the **Export** button in the top panel.
+2. Download the **TSV** results file first.
+3. Optionally download additional outputs, such as:
+   - CSV results
+   - JSON results
+   - aligned FASTA sequences
+   - tree file
+   - error or warning files, if available
+4. Save the files in a clearly named folder, for example:
+
+```text
+day_04_nextclade_results/
+```
+
+Recommended files to keep:
+
+| Exported file | Purpose |
+|---|---|
+| `nextclade.tsv` | Main tabular results; recommended for most users |
+| `nextclade.csv` | Same type of results in spreadsheet-compatible format |
+| `nextclade.json` | Detailed structured results |
+| aligned FASTA | Aligned nucleotide sequences |
+| tree file | Tree output for further inspection |
+| errors file | Fatal errors, if any occurred |
+
+> [!TIP]
+> Start with the TSV file. It is usually the safest format for checking results in a spreadsheet or importing into R or Python later.
+
+---
+
+## 11. Use the exported aligned FASTA output
+
+The exported aligned FASTA file can be useful for inspection or downstream analyses.
+
+Possible uses include:
+
+- checking sequence lengths after alignment
+- identifying large missing regions
+- using the alignment as input for selected downstream tools
+- comparing samples in an alignment viewer
+
+> [!CAUTION]
+> Do not treat the exported aligned FASTA as a complete phylogenetic workflow by itself. For phylogenetic analysis, check the alignment carefully and use an appropriate tree inference method.
+
+---
+
+## Mini exercise
 
 Try to answer the following questions:
 
 1. Why does Nextclade need a dataset?
-2. Which file contains the main tabular results?
-3. Which column reports the assigned clade?
-4. What does missing data tell you about a genome?
-5. Why might a sequence fail Nextclade QC?
-
----
-
-## Quick reference
-
-| Command | Purpose |
-|---|---|
-| `conda activate nextclade` | Activate the Nextclade environment |
-| `nextclade --help` | Show Nextclade help |
-| `nextclade dataset get` | Download a Nextclade dataset |
-| `nextclade run` | Run Nextclade analysis |
-| `--input-dataset` | Use a downloaded local dataset |
-| `--output-all` | Write all standard output files |
-| `less -S file.tsv` | View a wide table |
-| `head -n 1 file.tsv \| tr '\t' '\n' \| nl` | Show numbered TSV columns |
-| `cut -f 1-10 file.tsv` | Extract selected columns |
+2. Which browser action starts an analysis?
+3. Which file should most users export first?
+4. Which column or field reports the assigned clade?
+5. What does missing data tell you about a genome?
+6. Why might a sequence fail Nextclade QC?
+7. Why is it important to record the dataset version or analysis date?
+8. Why is Nextclade Web useful for small interactive analyses but not ideal for large automated pipelines?
 
 ---
 
