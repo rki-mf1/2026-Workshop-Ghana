@@ -224,8 +224,7 @@ mkdir -p analyses/mira-nf_iav_h3n2
 
 ```bash
 nextflow run CDCgov/MIRA-NF -r v2.0.0 \
-  -profile singularity,local \
-  -c "$PWD/configs/mira_lowmem_3gb.config" \
+  -profile docker,local \
   --input "$PWD/data/raw_data/iav_h3n2/samplesheet.csv" \
   --runpath "$PWD/data/raw_data/iav_h3n2" \
   --outdir "$PWD/analyses/mira-nf_iav_h3n2/results" \
@@ -235,6 +234,7 @@ nextflow run CDCgov/MIRA-NF -r v2.0.0 \
 
 > [!NOTE]
 > The option `--e Flu-ONT` tells MIRA-NF to run the Influenza ONT workflow.
+> If you are working on computer with limited RAM (e.g. less than 8GB) you can add this to your nextflow command: `-c "$PWD/configs/mira_lowmem_3gb.config"`.
 
 ### for SARS-CoV-2
 
@@ -248,8 +248,7 @@ mkdir -p analyses/mira-nf_sc2
 
 ```bash
 nextflow run CDCgov/MIRA-NF -r v2.0.0 \
-  -profile singularity,local \
-  -c "$PWD/configs/mira_lowmem_3gb.config" \
+  -profile nextflow,local \
   --input "$PWD/data/raw_data/sc2/samplesheet.csv" \
   --runpath "$PWD/data/raw_data/sc2" \
   --outdir "$PWD/analyses/mira-nf_sc2/results" \
@@ -259,6 +258,7 @@ nextflow run CDCgov/MIRA-NF -r v2.0.0 \
 
 > [!NOTE]
 > The option `--e SC2-Whole-Genome-ONT` tells MIRA-NF to run the SARS-CoV-2 ONT workflow.
+> If you are working on computer with limited RAM (e.g. less than 8GB) you can add this to your nextflow command: `-c "$PWD/configs/mira_lowmem_3gb.config"`
 
 ---
 
@@ -292,7 +292,7 @@ You used:
 | Command / option | Purpose |
 |---|---|
 | `nextflow run` | Launch a Nextflow pipeline |
-| `-profile singularity,local` | Run with Singularity on the local machine |
+| `-profile docker,local` | Run with Docker on the local machine |
 | `--input` | Path to the MIRA-NF samplesheet |
 | `--runpath` | Path to the ONT run directory containing `fastq_pass/` |
 | `--outdir` | Output directory for pipeline results |
