@@ -248,7 +248,7 @@ mkdir -p analyses/mira-nf_sc2
 
 ```bash
 nextflow run CDCgov/MIRA-NF -r v2.0.0 \
-  -profile nextflow,local \
+  -profile docker,local \
   --input "$PWD/data/raw_data/sc2/samplesheet.csv" \
   --runpath "$PWD/data/raw_data/sc2" \
   --outdir "$PWD/analyses/mira-nf_sc2/results" \
