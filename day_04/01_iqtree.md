@@ -64,17 +64,9 @@ conda activate iqtree
 Check that the tools are available.
 
 ```bash
-iqtree2 --version
+iqtree --version
 mafft --version
 ```
-
-> [!TIP]
-> Depending on the installation, the IQ-TREE command may be called `iqtree2` or `iqtree`.
-> If `iqtree2 --version` does not work, try:
->
-> ```bash
-> iqtree --version
-> ```
 
 ---
 
@@ -191,7 +183,7 @@ head analyses/iqtree/alignment/consensus_sequences.aligned.fasta
 Now run IQ-TREE on the alignment.
 
 ```bash
-iqtree2 \
+iqtree \
   -s analyses/iqtree/alignment/consensus_sequences.aligned.fasta \
   -m MFP \
   -B 1000 \
@@ -208,9 +200,6 @@ Meaning of the most important options:
 | `-B 1000` | Run 1000 ultrafast bootstrap replicates |
 | `-T AUTO` | Automatically choose the number of CPU threads |
 | `--prefix` | Prefix for all output files |
-
-> [!TIP]
-> If your installation uses `iqtree` instead of `iqtree2`, run the same command with `iqtree`.
 
 ---
 
@@ -284,7 +273,7 @@ Try to answer the following questions:
 |---|---|
 | `conda activate iqtree` | Activate the IQ-TREE environment |
 | `mafft --auto input.fasta > aligned.fasta` | Create a multiple sequence alignment |
-| `iqtree2 -s aligned.fasta -m MFP -B 1000 -T AUTO` | Infer a maximum-likelihood tree |
+| `iqtree -s aligned.fasta -m MFP -B 1000 -T AUTO` | Infer a maximum-likelihood tree |
 | `grep "^>" file.fasta` | Show sequence names |
 | `grep -c "^>" file.fasta` | Count sequences |
 
