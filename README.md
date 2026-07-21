@@ -1,91 +1,53 @@
 # Genomic Surveillance of Respiratory Viruses
 
-## 🇲🇦 Bioinformatics Workshop - Rabat, Morocco, May 2026
+## Bioinformatics Workshop - Accra, Ghana, July 2026
 
-This repository contains the materials and documentation for the workshop on genomic surveillance of Influenza A and SARS-CoV-2.
+This repository contains the materials and documentation for the workshop on the bioinformatics of the monkey pox virus
 
 ## Instructors
-* Simon Tausch
-* Vladimir Bajić 
+* Marie Lataretu
+* Torsten Houwaart 
 
 ## Schedule
 
-### [Day 01 | 2026-05-04 | Monday](day_01/README.md)
+### [Day 01 | 2026-07-28 | Tuesday](day_01/README.md)
 
-Linux introduction, terminal basics, navigation, file management, viewing files, editing text, compression, and searching.
+Linux introduction, terminal basics, navigation, file management, viewing files, editing text.
 
 | Time          | Activity                 |
 |---------------|--------------------------|
 | 09:00 - 09:30 | Check-in                 |
-| 09:30 - 10:45 | Workshop Intro and Setting up Laptops       |
-| 10:45 - 11:00 | ☕ Break                 |
-| 11:00 - 12:00 | Talk: Linux Intro        |
-| 12:00 - 13:00 | 🍽️ Lunch Break           |
-| 13:00 - 14:45 | Hands-On: Linux Intro    |
-| 14:45 - 15:00 | ☕ Break                 |
-| 15:00 - 16:45 | Hands-On: Linux Advanced |
-| 16:45 - 17:00 | Recap & Daily Feedback   |
+| ??            | Laptop set up            |
+| ??            | Topic: Linux CLI         |
+| ??            | 🍽️ Lunch Break           |
+| ??            | Hands-On: Linux Intro    |
+| ??            | ☕ Break                 |
 
-### [Day 02 | 2026-05-05 | Tuesday](day_02/README.md)
+### [Day 02 | 2026-07-29 | Wednesday](day_02/README.md)
 
 | Time          | Activity                                 |
 |---------------|------------------------------------------|
 | 09:00 - 09:30 | Recap                                    |
-| 09:30 - 10:45 | Talks: Data and Software Management       |
-| 10:45 - 11:00 | ☕ Break                                 |
-| 11:00 - 12:00 | Hands-On: Software Management with Conda |
-| 12:00 - 13:00 | 🍽️ Lunch Break                           |
-| 13:00 - 13:30 | NGS Introduction                         |
-| 13:30 - 14:00 | Talk: QC using fastplong                     |
-| 14:00 - 14:30 | ☕ Break                                 |
-| 14:30 - 16:45 | Hands-On: QC using fastplong                 |
-| 16:45 - 17:00 | Recap & Daily Feedback                   |
+| ??            | Topic: QC                           |
+| ??            | ☕ Break                                 |
+| ??            | Topic: Mapping                                |
+| ?? | 🍽️ Lunch Break                           |
+| ??            | Topic: Assembly                           |
+| ??            | Topic: Variant calling                    |
 
-### [Day 03 | 2026-05-06 | Wednesday](day_03/README.md)
+
+### [Day 03 | 2026-07-30 | Thursday](day_03/README.md)
 
 | Time          | Activity                                   |
 |---------------|--------------------------------------------|
 | 09:00 - 09:30 | Recap                                      |
-| 09:30 - 10:45 | Talk: Mapping and Reference Based Assembly |
-| 10:45 - 11:00 | ☕ Break                                   |
-| 11:00 - 12:00 | Hands-On: Mapping with minimap2            |
-| 12:00 - 13:00 | 🍽️ Lunch Break                             |
-| 13:00 - 13:30 | 🌟 Special Talk by Marie Lataretu <br>"Integrated Genomic Surveillance in Germany - A Spotlight on Viruses and Pipelines" |
-| 13:30 - 14:45 | Talk: Variant Calling and MIRA-NF          |
-| 14:45 - 15:00 | ☕ Break                                   |
-| 15:00 - 16:45 | Hands-On: MIRA-NF                          |
-| 16:45 - 17:00 | Recap & Daily Feedback                     |
+| ?? | Topic: QC on assemblies |
+| ?? | ☕ Break                                   |
+| ?? | Topic: iTOL            |
+| ?? | 🍽️ Lunch Break                             |
+| ?? | Topic: treetime            |
+| 16:15 - 16:30 | Recap & Closing remarks          |
 
-### [Day 04 | 2026-05-07 | Thursday](day_04/README.md)
-
-| Time          | Activity                 |
-|---------------|--------------------------|
-| 09:00 - 09:30 | Recap                    |
-| 09:30 - 10:45 | Talk: Phylogenetics      |
-| 10:45 - 11:00 | ☕ Break                 |
-| 11:00 - 12:00 | Hands-On: IQ-TREE        |
-| 12:00 - 13:00 | 🍽️ Lunch Break           |
-| 13:00 - 13:30 | Participant Presentation |
-| 13:30 - 14:45 | Talk: Nextclade          |
-| 14:45 - 15:00 | ☕ Break                 |
-| 15:00 - 16:45 | Hands-On: Nextclade      |
-| 16:45 - 17:00 | Recap & Daily Feedback   |
-
-### [Day 05 | 2026-05-08 | Friday](day_05/README.md)
-
-| Time          | Activity                                 |
-|---------------|------------------------------------------|
-| 09:00 - 09:30 | Recap                                    |
-| 09:30 - 10:45 | Hands-On: Bring Your Own Data            |
-| 10:45 - 11:00 | ☕ Break                                 |
-| 11:00 - 12:00 | Hands-On: Bring Your Own Data            |
-| 12:00 - 13:00 | 🍽️ Lunch Break                           |
-| 13:00 - 13:30 | Participant Presentation                 |
-| 13:30 - 14:45 | Hands-On: Bring Your Own Data            |
-| 14:45 - 15:00 | ☕ Break                                 |
-| 15:00 - 16:00 | Hands-On: Bring Your Own Data            |
-| 16:00 - 16:30 | Recap & Workshop Feedback                |
-| 16:30 - 17:00 | Farewell                                 |
 
 ## Recommended setup
 
@@ -93,8 +55,8 @@ Clone the repository into your home directory:
 
 ```bash
 cd ~
-git clone https://github.com/rki-mf1/2026-Workshop-HSPA-Morocco.git
-cd ~/2026-Workshop-HSPA-Morocco
+git clone https://github.com/rki-mf1/2026-Workshop-Ghana.git
+cd ~/2026-Workshop-Ghana
 ```
 
 ## How to use this repository
