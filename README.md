@@ -1,4 +1,4 @@
-# Bioinformatics analysis of the monkey pox viurs
+# Bioinformatics analysis of the monkey pox virus
 
 ## Bioinformatics Workshop - Accra, Ghana, July 2026
 
