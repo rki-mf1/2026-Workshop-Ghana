@@ -1,4 +1,4 @@
-# Genomic Surveillance of Respiratory Viruses
+# Bioinformatics analysis of the monkey pox viurs
 
 ## Bioinformatics Workshop - Accra, Ghana, July 2026
 
