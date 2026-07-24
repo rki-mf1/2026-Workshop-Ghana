@@ -15,7 +15,7 @@ By the end of this lesson, you should be able to:
 
 ## Working assumption
 
-This lesson assumes you cloned the repository into your **home** directory (`~`).
+This lesson should be located in a folder below your **home** directory (`~`).
 All examples below use paths relative to that location.
 
 ## Before you start
@@ -23,7 +23,7 @@ All examples below use paths relative to that location.
 Open a terminal and move into the workshop repository:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco
+cd ~/2026-Workshop-Ghana
 ```
 
 Create a safe practice area for this session:
@@ -55,14 +55,12 @@ ls .
 ls ..
 ls -l
 ls -lh
-ls -lt
 ```
 
 ### 💬 Discussion
 
 - What is the difference between `ls`, `ls -l`, and `ls -lh`?
 - What does `ls ..` show?
-- Which option sorts by modification time, newest first?
 
 ---
 
@@ -79,9 +77,6 @@ Or use the short help page:
 ```bash
 ls --help
 cp --help
-mv --help
-rm --help
-mkdir --help
 ```
 
 ### 💬 Discussion
@@ -111,7 +106,7 @@ Linux is **case-sensitive**:
 Start in the repository root:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco
+cd ~/2026-Workshop-Ghana
 pwd
 ```
 
@@ -127,7 +122,7 @@ pwd
 cd ~
 pwd
 
-cd ~/2026-Workshop-HSPA-Morocco/data
+cd ~/2026-Workshop-Ghana/data
 pwd
 
 cd -
@@ -147,14 +142,14 @@ pwd
 
 An **absolute path** starts from the filesystem root `/`.
 
-Example: `/home/username/2026-Workshop-HSPA-Morocco/data`
+Example: `/home/username/2026-Workshop-Ghana/data`
 
 A **relative path** starts from where you are right now.
 
 Example workflow:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco
+cd ~/2026-Workshop-Ghana
 ls data
 
 cd data
@@ -167,7 +162,7 @@ ls ..
 Run these commands and explain why they work:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco
+cd ~/2026-Ghana
 ls data
 
 cd data
@@ -195,7 +190,7 @@ cd ./data
 Return to your scratch directory:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco/scratch
+cd ~/2026-Workshop-Ghana/scratch
 pwd
 ```
 
@@ -237,7 +232,7 @@ nano my_text_file.txt
 
 Inside `nano`, try the following:
 
-- write two or three lines (e.g. tell us how much you like whales 🐋)
+- write two or three lines (e.g. tell us how much you like birds)
 - save with `Ctrl + O`
 - exit with `Ctrl + X`
 
@@ -371,35 +366,16 @@ Show only the last lines:
 tail notes.txt
 ```
 
-Open it page by page:
-
-```bash
-less notes.txt
-```
-
-### Useful `less` controls
-
-- `q` — quit
-- `/` followed by a pattern — search inside the file
-- `n` — next match
-- `p` — previous match
-- `Space` — next page
-
-### 💬 Discussion
-
-- When is `less` better than `cat`?
-- Which commands are more useful for large files?
-
 
 ---
 
 ## 11. Mini challenge
 
-In `scratch` directory you created earlier, do the following:
+In the `scratch` directory you created earlier, do the following:
 
 1. create a directory called `project_demo`and move into it
 2. create a file called `readme.txt` inside it
-3. write one line into that file (e.g. "I love whales")
+3. write one line into that file (e.g. "I love birds")
 4. copy `readme.txt` file and name it `readme_copy.txt`
 5. rename `readme_copy.txt` to `readme_backup.txt`
 6. show the first lines of the original `readme.txt` file
@@ -408,12 +384,12 @@ One possible solution:
 
 ```bash
 # 1.
-cd ~/2026-Workshop-HSPA-Morocco/scratch
+cd ~/2026-Workshop-Ghana/scratch
 mkdir project_demo
 cd project_demo
 
 # 2. and 3.
-echo "I love whales" > readme.txt
+echo "I love birds" > readme.txt
 
 # 4.
 cp readme.txt readme_copy.txt
@@ -443,7 +419,6 @@ head readme.txt
 | `rm -r` | Remove directories recursively |
 | `rmdir` | Remove an empty directory |
 | `cat` | Print a file |
-| `less` | View a file page by page |
 | `head` | Show first lines |
 | `tail` | Show last lines |
 

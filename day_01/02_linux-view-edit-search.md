@@ -7,7 +7,6 @@
 By the end of this lesson, you should be able to:
 
 - unpack and inspect `.tar.gz` archives
-- work with compressed `.gz` files using `gzip`, `gunzip`, `zcat`, and `zless`
 - search text with `grep`
 - combine commands using pipes (`|`)
 - extract columns from tabular files
@@ -18,7 +17,7 @@ By the end of this lesson, you should be able to:
 Open a terminal and move into the workshop repository:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco
+cd ~/2026-Workshop-Ghana
 ```
 
 Create a safe practice area for this session:
@@ -53,17 +52,16 @@ When combined, `.tar.gz` means:
 - That archive is then compressed to save space.
 
 
-We prepared few of them in `data/tutorial_data`. First, copy them in your current working directory:
+We prepared one archive in `data/tutorial_data`. First, copy it to your current working directory:
 
 ```bash
-cp ~/2026-Workshop-HSPA-Morocco/data/tutorial_data/*.tar.gz .
+cp ~/2026-Workshop-Ghana/data/tutorial_data/references.tar.gz .
 ```
 
 You can **extract** `.tar.gz` like this:
 
 ```bash
 tar -xvzf references.tar.gz
-tar -xvzf SRR32055875_irma_output.tar.gz
 ```
 
 ### Meaning of the options
@@ -79,23 +77,11 @@ Check what was extracted:
 ls -lh
 ```
 
-If `tree` is installed, view the directory structure:
-
-```bash
-tree
-```
-
-If `tree` is not available, use:
-
-```bash
-ls -R
-```
-
 Compare the sizes of compressed file vs uncompressed directory:
 
 ```bash
-du -hs SRR32055875_irma_output.tar.gz
-du -hs SRR32055875_irma_output
+du -hs references.tar.gz
+du -hs references
 ```
 
 Try making your first `.tar.gz`:
@@ -115,38 +101,45 @@ tar -cvzf my_first_tar_file.tar.gz references
 
 Genomics files are often very large, frequently reaching several gigabytes. To reduce storage requirements, they are commonly compressed with `gzip`. Although these files contain binary data and cannot be read directly with standard text tools, you can still inspect them from the command line without decompressing them first.
 
+
+Troughout the course we will work with data that is in `course_data`. This folder is not part of the git repository but was added by us manually. We will first copy one of those files to our working directory.
+
+```bash
+cp ~/2026-Workshop-Ghana/course_data/ERR10096087_1.fastq.gz .
+```
+
+
 First, let’s try seeing zipped file using `head` command.
 
 ```bash
-head references/sc2/*.fasta.gz
+head ERR10096087_1.fastq.gz
 ```
 
-🎉 Congratulations! Instead of a readable FASTA file, you have discovered mysterious alien 👽 symbols — clear evidence that SARS-CoV-2 may have arrived from a galaxy far, far away.
+🎉 Congratulations! Instead of a readable FASTQ file, you have discovered mysterious alien 👽 symbols.
 
-What actually happened is that head is showing you the raw compressed binary data of the `.gz` file — which looks like nonsense. To properly look inside compressed FASTA files, you need to use tools that understand `gzip` compression, such as:
+What actually happened is that head is showing you the raw compressed binary data of the `.gz` file — which looks like nonsense. To properly look inside compressed FASTQ files, you need to use tools that understand `gzip` compression, such as:
 
 ```bash
-zcat references/sc2/*.fasta.gz | head
+zcat ERR10096087_1.fastq.gz | head
 ```
 
-Let's copy it in current working directory, and then uncompress it:
+Let's uncompress it:
 
 ```bash
-cp references/sc2/*.fasta.gz . 
 
 # Uncompress but keep compressed file to compare sizes
-gunzip -k Wuhan-Hu-1_ASM985889v3.fasta.gz
+gunzip -k ERR10096087_1.fastq.gz
 ls -lh
 
 # Remove gz file
-rm Wuhan-Hu-1_ASM985889v3.fasta.gz
+rm ERR10096087_1.fastq.gz
 ls -lh 
 ```
 
 To compress file:
 
 ```bash
-gzip Wuhan-Hu-1_ASM985889v3.fasta
+gzip ERR10096087_1.fastq
 ls -lh
 ```
 
@@ -158,77 +151,50 @@ ls -lh
 
 ---
 
-## 3. Inspect compressed files without unpacking them
-
-Try and compare these commands:
-
-```bash
-cat Wuhan-Hu-1_ASM985889v3.fasta.gz
-```
-
-```bash
-zcat Wuhan-Hu-1_ASM985889v3.fasta.gz
-```
-
-```bash
-zcat Wuhan-Hu-1_ASM985889v3.fasta.gz | head
-```
-
-```bash
-zcat Wuhan-Hu-1_ASM985889v3.fasta.gz | tail
-```
-
-```bash
-zless Wuhan-Hu-1_ASM985889v3.fasta.gz
-```
-
-### 💬 Discussion
-
-- Why is `cat` not useful on a `.gz` file?
-- When is `zless` better than unzipping a large file first?
-
----
 
 ## 4. Search text with `grep`
 
-Let's copy one of the VCF files in our current working directory to explore it:
 
-```bash
-cp SRR32055875_irma_output/A_HA_H3.vcf .
-```
-
-Search for one word:
-
-```bash
-grep "PASS" A_HA_H3.vcf
-grep "FILTER" A_HA_H3.vcf
-```
-
-Count matching lines:
-
-```bash
-grep -c "PASS" A_HA_H3.vcf
-```
-
-Search case-insensitively:
-
-```bash
-grep "pAsS" A_HA_H3.vcf
-grep -i "pAsS" A_HA_H3.vcf
-```
-
-Search for lines that start with a pattern:
-
-```bash
-zgrep "^>" Wuhan-Hu-1_ASM985889v3.fasta
-grep "^#" A_HA_H3.vcf
-```
-
-### 💬 Discussion
-
-- What does `-c` do?
-- What does `-i` do?
-- What does `^>` and `^#` mean?
+todo
+#
+#Let's copy one of the VCF files in our current working directory to explore it:
+#
+#```bash
+#cp SRR32055875_irma_output/A_HA_H3.vcf .
+#```
+#
+#Search for one word:
+#
+#```bash
+#grep "PASS" A_HA_H3.vcf
+#grep "FILTER" A_HA_H3.vcf
+#```
+#
+#Count matching lines:
+#
+#```bash
+#grep -c "PASS" A_HA_H3.vcf
+#```
+#
+#Search case-insensitively:
+#
+#```bash
+#grep "pAsS" A_HA_H3.vcf
+#grep -i "pAsS" A_HA_H3.vcf
+#```
+#
+#Search for lines that start with a pattern:
+#
+#```bash
+#zgrep "^>" Wuhan-Hu-1_ASM985889v3.fasta
+#grep "^#" A_HA_H3.vcf
+#```
+#
+#### 💬 Discussion
+#
+#- What does `-c` do?
+#- What does `-i` do?
+#- What does `^>` and `^#` mean?
 
 ---
 
@@ -336,7 +302,7 @@ wc -w data.csv
 Create a directory for scripts:
 
 ```bash
-cd ~/2026-Workshop-HSPA-Morocco/scratch_2
+cd ~/2026-Workshop-Ghana/scratch_2
 mkdir -p scripts
 cd scripts
 ```
@@ -388,13 +354,13 @@ ls -lh
 Run it explicitly with Bash:
 
 ```bash
-bash create_project.sh ~/2026-Workshop-HSPA-Morocco/scratch_2/scripts demo_project
+bash create_project.sh ~/2026-Workshop-Ghana/scratch_2/scripts demo_project
 ```
 
 Run it directly:
 
 ```bash
-./create_project.sh ~/2026-Workshop-HSPA-Morocco/scratch_2/scripts demo_project_2
+./create_project.sh ~/2026-Workshop-Ghana/scratch_2/scripts demo_project_2
 
 # or
 
@@ -495,7 +461,7 @@ chmod +x if_else.sh
 
 ## 11. Optional | Mini VCF challenge
 
-In `~/2026-Workshop-HSPA-Morocco/scratch_2`, do the following:
+In `~/2026-Workshop-Ghana/scratch_2`, do the following:
 
 1. Exclude header lines starting with `#` from the file `A_HA_H3.vcf`
 2. Use `cut` to extract the `REF` column
