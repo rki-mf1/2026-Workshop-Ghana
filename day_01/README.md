@@ -1,8 +1,5 @@
 # Day 01 — Linux Introduction
 
-## 📝 Pre-Training Assessment
-
-Before we begin with the training, please fill in this [Pre-Training Assessment](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Pre-and-Post-Training-Assessments).
 
 ## 🎯 Learning goals
 
@@ -24,23 +21,7 @@ By the end of Day 01, you should be able to:
 Day 01 introduces the Linux command line and basic filesystem operations that will be used throughout the workshop.
 
 You should work from a cloned copy of this repository in your **home** directory (`~`).
-To clone this repository you need to have `git` installed. 
-You can check if you already have `git` by opening a **terminal**, typing `git --version` and pressing enter. 
-If you do not see git help message you should install it.
 
-### Installing Git
-
-```bash
-sudo apt-get install git
-```
-
-### Cloning workshop GitHub repo
-
-```bash
-cd ~
-git clone https://github.com/rki-mf1/2026-Workshop-HSPA-Morocco.git
-cd ~/2026-Workshop-HSPA-Morocco
-```
 
 ## 💻 Practicals
 
@@ -54,10 +35,6 @@ cd ~/2026-Workshop-HSPA-Morocco
 - [Introduction to Linux](https://docs.google.com/presentation/d/1IT6ZC0z4hHnygW81NiD_4oupOAdWxyLN_-14xigugCA)
 - [Simple Shell Scripts](https://docs.google.com/presentation/d/1lVnhR3xm0Md9LdKfhtsvSGnH3Ou9l8PEDnNO_jcQSmU)
 - [Cheat Sheet - Linux for Bioinformatics](https://drive.google.com/file/d/1xBTF8B2VREUitXISQvDYYwPE3uMrd9Xu/view?usp=drive_link)
-
-## 📝 Evaluation
-
-Please fill in this [daily feedback evaluation](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Daily-Feedback) at the end of the day.
 
 
 [⬅ Back to main page](../README.md)

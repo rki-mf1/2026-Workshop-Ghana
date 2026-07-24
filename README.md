@@ -16,12 +16,10 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 
 | Time          | Activity                 |
 |---------------|--------------------------|
-| 09:00 - 09:30 | Check-in                 |
-| ??            | Laptop set up            |
-| ??            | Topic: Linux CLI         |
-| ??            | 🍽️ Lunch Break           |
-| ??            | Hands-On: Linux Intro    |
-| ??            | ☕ Break                 |
+| 09:00 - 12:00 | Check-in &                |
+|             | Laptop set up            |
+| 12:00 - 13:00            | 🍽️ Lunch Break           |
+| 13:00 - 16:30 | Linux CLI 
 
 ### [Day 02 | 2026-07-29 | Wednesday](day_02/README.md)
 
