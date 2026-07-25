@@ -65,5 +65,5 @@ mkdir sdir
 ```
 
 ```bash
-nextflow run ~/amplicon-nf -profile conda --input input/samplesheet_ill.csv outdir output --store_dir sdir
+nextflow run ~/amplicon-nf -profile conda --input input/samplesheet_ill.csv outdir output --store_dir ~/2026-Workshop-Ghana/model_dir -resume
 ```
