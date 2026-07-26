@@ -151,83 +151,7 @@ ls -lh
 
 ---
 
-
-## 4. Search text with `grep`
-
-
-todo
-#
-#Let's copy one of the VCF files in our current working directory to explore it:
-#
-#```bash
-#cp SRR32055875_irma_output/A_HA_H3.vcf .
-#```
-#
-#Search for one word:
-#
-#```bash
-#grep "PASS" A_HA_H3.vcf
-#grep "FILTER" A_HA_H3.vcf
-#```
-#
-#Count matching lines:
-#
-#```bash
-#grep -c "PASS" A_HA_H3.vcf
-#```
-#
-#Search case-insensitively:
-#
-#```bash
-#grep "pAsS" A_HA_H3.vcf
-#grep -i "pAsS" A_HA_H3.vcf
-#```
-#
-#Search for lines that start with a pattern:
-#
-#```bash
-#zgrep "^>" Wuhan-Hu-1_ASM985889v3.fasta
-#grep "^#" A_HA_H3.vcf
-#```
-#
-#### 💬 Discussion
-#
-#- What does `-c` do?
-#- What does `-i` do?
-#- What does `^>` and `^#` mean?
-
----
-
-## 5. Pipes
-
-A pipe sends the output of one command into the next command.
-
-Examples:
-
-```bash
-cat A_HA_H3.vcf | wc -l
-```
-
-```bash
-grep "PASS" A_HA_H3.vcf | wc -l
-```
-
-```bash
-grep "PASS" A_HA_H3.vcf | less
-```
-
-```bash
-grep "PASS" A_HA_H3.vcf | head
-```
-
-### 💬 Discussion
-
-- Why is `|` useful?
-- Which part runs first in `grep "PASS" A_HA_H3.vcf | less`?
-
----
-
-## 6. Work with tabular data from the command line
+## 3. Work with tabular data from the command line
 
 Create a small CSV file:
 
@@ -294,6 +218,80 @@ wc -w data.csv
 
 - Why is `sort` usually needed before `uniq`?
 - What does `tail -n +2` do in the examples above?
+
+---
+
+## 4. Search text with `grep`
+
+
+Let's copy the primer BED file to our current working directory to explore it:
+
+```bash
+cp ../assets/schemes/mpxv/primer.bed .
+```
+
+Search for one word:
+
+```bash
+grep "_4_" primer.bed
+grep "_4" primer.bed
+```
+
+Count matching lines:
+
+```bash
+grep -c "_4" primer.bed
+```
+
+Search case-insensitively:
+
+```bash
+grep "Left" primer.bed
+grep -i "Left" primer.bed
+```
+
+Search for lines that start with a pattern:
+
+```bash
+grep "^M" primer.bed
+grep "^_4" primer.bed
+```
+#
+#### 💬 Discussion
+#
+#- What does `-c` do?
+#- What does `-i` do?
+#- What does `^M` and `^_4` mean?
+
+---
+
+## 5. Pipes
+
+A pipe sends the output of one command into the next command.
+
+Examples:
+
+```bash
+cat primer.bed | wc -l
+```
+
+```bash
+grep "_4" primer.bed | wc -l
+```
+
+```bash
+grep "_4" primer.bed | less
+```
+
+```bash
+grep "_4" primer.bed | head
+```
+
+### 💬 Discussion
+
+- Why is `|` useful?
+- Which part runs first in `grep "PASS" A_HA_H3.vcf | less`?
+
 
 ---
 
@@ -459,20 +457,6 @@ chmod +x if_else.sh
 
 ---
 
-## 11. Optional | Mini VCF challenge
-
-In `~/2026-Workshop-Ghana/scratch_2`, do the following:
-
-1. Exclude header lines starting with `#` from the file `A_HA_H3.vcf`
-2. Use `cut` to extract the `REF` column
-3. Count unique values
-4. Save the output in a file called `my_results.txt`
-
-```bash
-grep -v "^#" A_HA_H3.vcf | cut -f4 | sort | uniq -c > my_results.txt
-```
-
----
 
 ## 📌 Quick reference
 
