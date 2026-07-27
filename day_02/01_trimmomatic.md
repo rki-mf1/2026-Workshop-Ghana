@@ -51,7 +51,8 @@ mkdir -p output
 Copy one FASTQ file into the `input` directory.
 
 ```bash
-cp ~/2026-Workshop-Ghana/course_data/ ...
+cp ~/2026-Workshop-Ghana/course_data/ERR10096087_1.fastq.gz input
+cp ~/2026-Workshop-Ghana/course_data/ERR10096087_2.fastq.gz input
 ```
 
 Check that the file was copied successfully.
@@ -60,11 +61,13 @@ Check that the file was copied successfully.
 ls -lh input/
 ```
 
-> If your FASTQ file has a different name, adjust the commands below accordingly.
+### 💬 Discussion
+
+- Which file is bigger ? (You should be able to see this information from the last ouput)
+- How many reads are in each file ? (Use `grep -c` or `wc` to find out)
 
 ## 3. Basic `trimmomatic` syntax
-
-The basic structure of a `trimmomatic` command is:
+We will call the chosen sample _peter_, just to things easier down the line for us. We will run a few different tools on peter. The riste one will be _trimmomatic_. The basic structure of a `trimmomatic` command is:
 
 ```bash
 trimmomatic PE --help
@@ -74,13 +77,13 @@ Important options used in this practical:
 
 | Option | Meaning |
 |---|---|
-| `--in` | Input FASTQ file |
-| `--out` | Output FASTQ file after filtering/trimming |
+| `[-basein <inputBase> \| <inputFile1> <inputFile2>]` | You have the option to either provide a prefix or two fastq files explicitly |
+| `[-baseout <outputBase> \| <outputFile1P> <outputFile1U> <outputFile2P> <outputFile2U>]` | same as above |
 
 
 ## 4. Run `trimmomatic`
 
-First, run `trimmomatic` using these settings.
+ Firstly, run `trimmomatic` using these settings.
 
 ```bash
 trimmomatic PE -summary peter.summary.txt -trimlog output/peter.trim.log input/ERR10096087_1.fastq.gz input/ERR10096087_2.fastq.gz -baseout output/peter LEADING:30 TRAILING:30 SLIDINGWINDOW:4:20 MINLEN:35
@@ -101,8 +104,9 @@ Look at the report and try to answer:
 
 
 
-## 5. change parameters
+## 5. Change parameters
 
+Now we will be more strict and demand that reads are at least 40 nucleotides long. Otherwise they get filtered out.
 
 
 ```bash
@@ -123,11 +127,6 @@ Try to find a parameter set where between 0% and 10% of reads survive.
 
 In this practical, you used `trimmomatic` to perform filtering of Illumina short reads.
 
-| Analysis | Main option used | Output directory |
-|---|---|---|
-| Default QC | Default parameters | `filtered_reads/default_params/` |
-| Length filtering | `--length_required 500` | `filtered_reads/by_length/` |
-| Quality filtering | `--mean_qual 10` | `filtered_reads/by_quality/` |
 
 ---
 
