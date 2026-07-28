@@ -1,40 +1,33 @@
-# Day 03 — Mapping, Reference-Based Assembly, and Variant Calling
+# Day 03 — From genomes to clades and trees
 
 ## Overview
 
-Day 03 focuses on reference-based genome reconstruction and variant calling. 
+Day 03 focuses on QC of genomes, clade assignment and phylogenetic analysis. 
 
-The practical session introduces `minimap2` for read mapping and `MIRA-NF` for reference-based assembly and variant calling. 
-`minimap2` will be used to demonstrate the process of mapping which is necessary for understanding of reference-based assemblies. 
-After that we will run `MIRA-NF` that can be used for assembly of multiple pathogens including influenza, sars-cov2 for both ONT and Illumina data.
+The practical session introduces `Nextclade` for QC of genomes, mutation calling, clade assignment.
+We will use `omnifluss_downstream` that finds the best matching Nextclade dataset and runs Nextclade.
+Then `omnifluss_downstream` aligns the translated amino acid sequences with `mafft`, builds a tree with `IQ-TREE` and reconstructs the ancestral sequence with `TreeTime`.
 
 ## 🎯 Learning goals
 
 By the end of Day 03, you should be able to:
 
-- understand the difference between **de novo assembly** and **reference-based assembly**
-- explain why choosing an appropriate reference genome is important
-- map sequencing reads to a reference genome using `minimap2`
-- understand the basic structure of **SAM/BAM** alignment files
-- describe what a **VCF** file contains
-- distinguish between reference bases, alternative bases, genotype calls, and variant quality information
-- understand the main steps performed by `MIRA-NF`
-- run or interpret a `MIRA-NF` variant calling workflow
-- inspect and interpret basic variant calling outputs
+- understand the advantage of workflow managers
+- understand QC of genomes
+- basic steps of Nextclade
+- understand the output of Nextclade
+- inspect a tree on auspice.us or peartree
+- understand basic principles of phylogenetics 
 
 ## 💻 Practicals
 
-1. [Mapping with minimap2](01_minimap2.md)
-2. [MIRA-NF](02_MIRA_NF.md)
+1. [QC, mutation calling, clade assignment](01_downstream.md)
 
 ## 👩‍🏫 Slides
 
-- [Reference-Based Assembly](https://docs.google.com/presentation/d/1v6zL6iEzGx5J7rtEcjGziaafWSFiwWpGT1CKWs94xfE)
-- [MIRA-NF](https://docs.google.com/presentation/d/1fQEHHBpG6SRKNlKSIgZCDFn1uWXzjf9TxwdHP9aZ1LA)
-
-## 📝 Evaluation
-
-Please fill in this [daily feedback evaluation](https://survey.lamapoll.de/HSPA-Morocco-Bioinformatics-Workshop-Daily-Feedback) at the end of the day.
+- [Introduction to Research Software Engeneering](../slides/Introduction_RSE.pdf)
+- [Introduction to Nextclade](../slides/Introduction_Nextclade.pdf)
+- [From sequences to trees](../slides/Introduction_Phylo.pdf)
 
 ---
 
