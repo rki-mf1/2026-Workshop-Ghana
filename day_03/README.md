@@ -4,9 +4,9 @@
 
 Day 03 focuses on QC of genomes, clade assignment and phylogenetic analysis. 
 
-The practical session introduces `Nextclade` for QC of genomes, mutation calling, clade assignment.
-We will use `omnifluss_downstream` that finds the best matching Nextclade dataset and runs Nextclade.
-Then `omnifluss_downstream` aligns the translated amino acid sequences with `mafft`, builds a tree with `IQ-TREE` and reconstructs the ancestral sequence with `TreeTime`.
+The practical session introduces `Nextclade` for QC of genomes, mutation calling, clade assignment and phylogenetic placement.
+We will use the pipeline `omnifluss_downstream` that finds the best matching Nextclade dataset and runs Nextclade.
+Then, `omnifluss_downstream` aligns the translated amino acid sequences with `mafft`, builds a tree with `IQ-TREE` and reconstructs the ancestral sequence with `TreeTime`.
 
 ## 🎯 Learning goals
 
@@ -25,7 +25,7 @@ By the end of Day 03, you should be able to:
 
 ## 👩‍🏫 Slides
 
-- [Introduction to Research Software Engeneering](../slides/Introduction_RSE.pdf)
+- [Introduction to Research Software Engineering](../slides/Introduction_RSE.pdf)
 - [Introduction to Nextclade](../slides/Introduction_Nextclade.pdf)
 - [From sequences to trees](../slides/Introduction_Phylo.pdf)
 
