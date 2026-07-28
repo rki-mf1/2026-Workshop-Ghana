@@ -29,6 +29,14 @@ By the end of Day 03, you should be able to:
 - [Introduction to Nextclade](../slides/Introduction_Nextclade.pdf)
 - [From sequences to trees](../slides/Introduction_Phylo.pdf)
 
+## Further reading
+
+- https://www.cdc.gov/advanced-molecular-detection/php/training/module-3-4.html
+- https://training.galaxyproject.org/training-material/topics/evolution/tutorials/abc_intro_phylo/tutorial.html#phylogenetics-back-to-basics
+- https://alliblk.github.io/genepi-book/index.html
+- https://nextstrain.org/narratives/trees-background
+- https://docs.nextstrain.org/projects/nextclade/en/stable/user/algorithm/06-quality-control.html#
+
 ---
 
 [⬅ Back to main page](../README.md)
