@@ -21,7 +21,8 @@ By the end of Day 03, you should be able to:
 
 ## 💻 Practicals
 
-1. [QC, mutation calling, clade assignment](01_downstream.md)
+1. [Genome reconstruction pipeline](01_pipeline.md)
+2. [QC, mutation calling, clade assignment](02_downstream.md)
 
 ## 👩‍🏫 Slides
 
@@ -31,11 +32,20 @@ By the end of Day 03, you should be able to:
 
 ## Further reading
 
+### Trees
+
 - https://www.cdc.gov/advanced-molecular-detection/php/training/module-3-4.html
 - https://training.galaxyproject.org/training-material/topics/evolution/tutorials/abc_intro_phylo/tutorial.html#phylogenetics-back-to-basics
 - https://alliblk.github.io/genepi-book/index.html
 - https://nextstrain.org/narratives/trees-background
+
+### Nextclade
+
 - https://docs.nextstrain.org/projects/nextclade/en/stable/user/algorithm/06-quality-control.html#
+
+### Nextflow & nf-core
+
+- https://training.nextflow.io/latest/hello_nf-core/
 
 ---
 

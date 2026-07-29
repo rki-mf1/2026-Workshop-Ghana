@@ -19,8 +19,6 @@ To reconstruct a genome and identify differences from a reference, a typical wor
 
 In this workflow, **FreeBayes** is used for variant calling. It examines mapped reads and reports candidate variants in a VCF file.
 
-> Important: a variant call is not automatically a trusted biological result. It must be interpreted together with read depth, mapping quality, strand support, primer effects, and the overall quality of the sample.
-
 ## 1. Activate the Nextflow Environment
 
 Activate the Conda environment that contains Nextflow.
