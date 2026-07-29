@@ -57,7 +57,7 @@ cp ~/2026-Workshop-Ghana/analysis/map/output/*bam* input
 We also need the primer.bed file
 
 ```bash
-cp ~/2026-Workshop-Ghana/data/primer.bed input
+cp ~/2026-Workshop-Ghana/assets/schemes/mpxv/primer.bed input
 ```
 
 Check that the file was copied successfully.
