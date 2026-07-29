@@ -64,3 +64,22 @@ nextflow run ~/amplicon-nf \
   --store_dir ~/2026-Workshop-Ghana/model_dir \
   -resume
 ```
+
+### Inspect the output
+
+```bash
+cd output
+ls -lah
+firefox mpvx_amplicon-nf_run-report.html
+```
+
+How is the quality of the samples?
+
+now check detailed results for a single sample
+
+```bash
+cd alva
+ls -la
+```
+
+which files do you recognize and and what is their content?
