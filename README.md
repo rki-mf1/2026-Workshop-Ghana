@@ -35,9 +35,14 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 | Time          | Activity                                   |
 |---------------|--------------------------------------------|
 | 09:00 - 09:30 | Recap                                      |
-| ?? | ☕ Break                                   |
-| ?? | 🍽️ Lunch Break                             |
-| 16:15 - 16:30 | Recap & Closing remarks          |
+| 09:30 - 09:45 | Pipelines and workflow manager                                      |
+| 09:45 - 10:30 | Genome reconstruction with `amplicon-nf`               |
+| 10:30 - 10:45 | ☕ Break                                   |
+| 10:45 - 12:00 | Downstream analysis I: Nextclade |
+| 12:00 - 13:00 | 🍽️ Lunch Break                     |
+| 13:00 - 14:30 | Downstream analysis II: Phylogenetic trees |
+| 14:30 - 15:30 | Data analysis                                 |
+| 15:30 - 16:00 | Recap & Closing remarks          |
 
 
 ## Recommended setup

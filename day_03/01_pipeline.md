@@ -6,7 +6,7 @@ The focus is on understanding where variant calling fits in the analysis and how
 
 ## Overview
 
-Amplicon sequencing produces short reads that cover selected regions of a viral genome.
+AAmplicon sequencing amplifies overlapping regions, amplicons, of a viral genome.
 
 To reconstruct a genome and identify differences from a reference, a typical workflow includes:
 
@@ -17,7 +17,16 @@ To reconstruct a genome and identify differences from a reference, a typical wor
 5. **Consensus reconstruction:** build a final genome sequence for each sample.
 6. **Quality control:** summarize coverage, missing data, and possible problems.
 
-In this workflow, **FreeBayes** is used for variant calling. It examines mapped reads and reports candidate variants in a VCF file.
+Bioinformatics pipelines run several tools in a defined order. This helps us:
+
+- avoid typing many commands by hand
+- keep analyses more reproducible
+- re-run only missing or updated steps
+- keep outputs organized
+
+Some pipelines use **workflow managers** such as Nextflow. A workflow manager controls which steps are run, which files go into each step, and where the outputs are written.
+
+In this workshop, the pipeline `amplicon-nf` reconstructs mpox genomes using a **reference-based approach**. In a reference-based approach, sequencing reads are mapped against a known reference genome to build a consensus genome for each sample.
 
 ## 1. Activate the Nextflow Environment
 
@@ -78,7 +87,7 @@ Discuss:
 
 - How many samples are listed?
 - Which columns are present?
-- Where are the input read files located?
+- Where are the input files located?
 - Do the sample names look consistent?
 
 ## 3. Run `amplicon-nf` with Nextflow
@@ -147,12 +156,6 @@ Inspect the report and answer:
 2. Are any samples flagged as lower quality?
 3. Which sample would you inspect first?
 4. Is there evidence of uneven performance across samples?
-
-Write down one sentence:
-
-``
-Overall, the run looks ...
-```
 
 ## 5. Inspect One Sample in Detail
 

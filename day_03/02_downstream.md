@@ -2,20 +2,13 @@
 
 # From Genomes to Clades and Trees
 
-In this lesson, we move from reconstructed mpox genomes to two common genomic epidemiology outputs:
-
-- **clade and lineage assignments**, which summarize where a genome fits in known mpox diversity
-- **phylogenetic trees**, which show how samples are related to reference and background sequences
-
-The goal is not only to run the tools, but to learn how to inspect the outputs carefully and connect them back to epidemiological questions.
-
 ## Learning Objectives
 
 By the end of this session, you should be able to:
 
-1. Explain what a downstream genomic epidemiology pipeline does after genome reconstruction.
+1. Explain what analyses can be done after genome reconstruction.
 2. Inspect a Nextclade report for clade assignment, mutations, missing data, and quality warnings.
-3. Distinguish between **phylogenetic placement** and **de novo phylogenetic reconstruction**.
+3. Distinguish between **phylogenetic placement** and **phylogenetic trees**.
 4. Visualize a tree in Auspice or PearTree.
 5. Use tree position, QC results, and metadata together to make cautious interpretations.
 
@@ -32,39 +25,6 @@ Start from the root directory of the workshop:
 
 ```bash
 cd ~/2026-Workshop-Ghana
-```
-
-## Recap: From Reads to Consensus Genomes
-
-Earlier, we used a pipeline to reconstruct genomes from raw sequencing reads.
-
-Bioinformatics pipelines run several tools in a defined order. This helps us:
-
-- avoid typing many commands by hand
-- keep analyses more reproducible
-- re-run only missing or updated steps
-- keep outputs organized
-
-Some pipelines use **workflow managers** such as Nextflow. A workflow manager controls which steps are run, which files go into each step, and where the outputs are written.
-
-In this workshop, the pipeline `amplicon-nf` reconstructs mpox genomes using a **reference-based approach**. In a reference-based approach, sequencing reads are mapped against a known reference genome to build a consensus genome for each sample.
-
-Example command from the genome reconstruction step:
-
-```bash
-# start at the root directory for the workshop
-cd ~/2026-Workshop-Ghana/analysis/amplicon-nf
-
-# activate the Nextflow environment
-conda activate nextflow_25
-
-# run the pipeline
-nextflow run ~/amplicon-nf \
-  -profile conda \
-  --input input/samplesheet_ill.csv \
-  --outdir output \
-  --store_dir ~/2026-Workshop-Ghana/model_dir \
-  -resume
 ```
 
 ## Today's Workflow: `omnifluss_downstream`
@@ -121,8 +81,6 @@ nextflow run rki-mf1/omnifluss_downstream \
   --nextclade_dataset_basedir nextclade_data
 ```
 
-After the pipeline finishes, we inspect the output instead of treating the run as a black box.
-
 ## Output Overview
 
 Move into the result directory:
@@ -157,7 +115,7 @@ Nextclade compares each genome to a curated reference dataset. It reports:
 Move to the Nextclade output folder:
 
 ```bash
-cd ~/2026-Workshop-Ghana/output/nextclade_run/MPX
+cd ~/2026-Workshop-Ghana/analysis/omnifluss_downstream/output/nextclade_run/MPX
 ls -lh
 ```
 
@@ -181,11 +139,7 @@ In the report, look for:
 
 ## Inspect the Nextclade Table
 
-Open the detailed Nextclade output table:
-
-```bash
-libreoffice --calc MPV_with_dataset_provenance.tsv
-```
+Open the detailed Nextclade output table `MPV_with_dataset_provenance.tsv` in `libreoffice calc`
 
 Useful questions when inspecting samples:
 
@@ -229,7 +183,7 @@ If you have internet access, open: https://auspice.us
 Then select this file:
 
 ```bash
-~/2026-Workshop-Ghana/results_omnifluss_downstream/nextclade_run/MPX/MPV.auspice.json
+~/2026-Workshop-Ghana/analysis/omnifluss_downstream/output/nextclade_run/MPX/MPV.auspice.json
 ```
 
 Use the tree controls to:
@@ -245,8 +199,6 @@ To highlight your input samples, filter the data for "Node type -> new" (start t
 
 ### Small Exercise 2: Tree Placement
 
-In small groups, answer:
-
 1. Where are the workshop samples located in the reference tree?
 2. Are they all in the same clade or lineage?
 3. Which reference or background samples are close to the workshop samples?
@@ -261,7 +213,7 @@ Examples of useful metadata:
 - travel history
 - sample quality
 
-## Part 3: Phylogenetic Reconstruction
+## Part 3: Phylogenetic trees
 
 Nextclade placement uses an existing reference tree.
 
@@ -272,12 +224,12 @@ In `omnifluss_downstream`, the pipeline:
 1. translates nucleotide genomes into amino acid sequences (from Nextclade)
 2. filters for high-quality sequences
 3. aligns the amino acid sequences with `MAFFT`
-4. reconstructs a tree with `IQ-TREE`
+4. creates a tree with `IQ-TREE`
 5. uses `TreeTime` to reconstruct ancestral sequences and annotate mutations on branches
 
 ### QC step
 
-For this workflow, translated amino acid sequences are used for tree reconstruction.
+For this workflow, translated amino acid sequences are used for the tree.
 
 Unknown nucleotide bases (`N`) translate into unknown amino acids (`X`). The pipeline filters sequences with high levels of `X`.
 
@@ -287,7 +239,7 @@ This means sequences with too many unknown amino acids are removed before tree b
 
 > **Interpretation point:** Filtering is not just a technical step. It affects which samples appear in the final tree.
 
-## Inspect Tree Reconstruction Outputs
+## Inspect Tree Outputs
 
 Move to the main result directory:
 
@@ -303,7 +255,7 @@ ls -la mafft
 
 The alignment is in FASTA format.
 
-Inspect the reconstructed tree:
+Inspect the tree:
 
 ```bash
 ls -la iqtree
@@ -324,7 +276,7 @@ TreeTime outputs may include:
 - Nexus files
 - JSON files for visualization
 
-## Visualize the Reconstructed Tree in PearTree
+## Visualize the Tree in PearTree
 
 We will visualize the Nexus tree in PearTree.
 
