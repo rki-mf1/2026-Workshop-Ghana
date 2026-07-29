@@ -1,7 +1,7 @@
 sample,barcode,platform,scheme_name,custom_scheme_path,custom_scheme_name,fastq_directory,fastq_1,fastq_2
-alva,,illumina,,~/2026-Workshop-Ghana/assets/schemes/mpxv,mpxv,,~/2026-Workshop-Ghana/course_data/ERR10096087_1.fastq.gz,~/2026-Workshop-Ghana/course_data/ERR10096087_2.fastq.gz
-blake,,illumina,,~/2026-Workshop-Ghana/assets/schemes/mpxv,mpxv,,~/2026-Workshop-Ghana/course_data/ERR10096089_1.fastq.gz,~/2026-Workshop-Ghana/course_data/ERR10096089_2.fastq.gz
-claude,,illumina,,~/2026-Workshop-Ghana/assets/schemes/mpxv,mpxv,,~/2026-Workshop-Ghana/course_data/ERR10096093_1.fastq.gz,~/2026-Workshop-Ghana/course_data/ERR10096093_2.fastq.gz
-dilem,,illumina,,~/2026-Workshop-Ghana/assets/schemes/mpxv,mpxv,,~/2026-Workshop-Ghana/course_data/ERR10096111_1.fastq.gz,~/2026-Workshop-Ghana/course_data/ERR10096111_2.fastq.gz
-elmar,,illumina,,~/2026-Workshop-Ghana/assets/schemes/mpxv,mpxv,,~/2026-Workshop-Ghana/course_data/ERR10096134_1.fastq.gz,~/2026-Workshop-Ghana/course_data/ERR10096134_2.fastq.gz
-flavio,,illumina,,~/2026-Workshop-Ghana/assets/schemes/mpxv,mpxv,,~/2026-Workshop-Ghana/course_data/ERR10123769_1.fastq.gz,~/2026-Workshop-Ghana/course_data/ERR10123769_2.fastq.gz
+alva,,illumina,,../../assets/schemes/mpxv,mpxv,,../../course_data/ERR10096087_1.fastq.gz,../../course_data/ERR10096087_2.fastq.gz
+blake,,illumina,,../../assets/schemes/mpxv,mpxv,,../../course_data/ERR10096089_1.fastq.gz,../../course_data/ERR10096089_2.fastq.gz
+claude,,illumina,,../../assets/schemes/mpxv,mpxv,,../../course_data/ERR10096093_1.fastq.gz,../../course_data/ERR10096093_2.fastq.gz
+dilem,,illumina,,../../assets/schemes/mpxv,mpxv,,../../course_data/ERR10096111_1.fastq.gz,../../course_data/ERR10096111_2.fastq.gz
+elmar,,illumina,,../../assets/schemes/mpxv,mpxv,,../../course_data/ERR10096134_1.fastq.gz,../../course_data/ERR10096134_2.fastq.gz
+flavio,,illumina,,../../assets/schemes/mpxv,mpxv,,../../course_data/ERR10123769_1.fastq.gz,../../course_data/ERR10123769_2.fastq.gz

@@ -1,7 +1,7 @@
 sample,fasta
-alva,/home/mf1/2026-Workshop-Ghana/data/alva.consensus.fasta
-blake,/home/mf1/2026-Workshop-Ghana/data/blake.consensus.fasta
-claude,/home/mf1/2026-Workshop-Ghana/data/claude.consensus.fasta
-dilem,/home/mf1/2026-Workshop-Ghana/data/dilem.consensus.fasta
-elmar,/home/mf1/2026-Workshop-Ghana/data/elmar.consensus.fasta
-flavio,/home/mf1/2026-Workshop-Ghana/data/flavio.consensus.fasta
+alva,../../data/fastas/alva.consensus.fasta
+blake,../../data/fastas/blake.consensus.fasta
+claude,../../data/fastas/claude.consensus.fasta
+dilem,../../data/fastas/dilem.consensus.fasta
+elmar,../../data/fastas/elmar.consensus.fasta
+flavio,../../data/fastas/flavio.consensus.fasta
