@@ -133,7 +133,7 @@ And we put the files where we want to find them
 
 ```bash
 cp ../aligntrim/output/peter.primertrimmed.sorted.bam input/
-cp ../bwamem/index/reference.fasta input/
+cp ../map/index/reference.fasta input/
 ```
 
 After this preparation we can now finally call the variant caller
