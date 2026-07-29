@@ -13,7 +13,7 @@ By the end of this practical, you should be able to:
 
 ## 1. Activate the Conda environment
 
-Activate the Conda environment that contains `bwa2mem`.
+Activate the Conda environment that contains `bwamem2`.
 
 ```bash
 conda activate bwamem2 
