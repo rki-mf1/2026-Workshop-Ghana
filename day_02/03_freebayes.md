@@ -51,7 +51,7 @@ mkdir -p output
 Copy the bam and bai file into the `input` directory.
 
 ```bash
-cp ~/2026-Workshop-Ghana/bwamem/output/*bam* input
+cp ~/2026-Workshop-Ghana/analysis/map/output/*bam* input
 ```
 
 We also need the primer.bed file
