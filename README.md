@@ -1,6 +1,6 @@
 # Bioinformatics analysis of the monkey pox virus
 
-## BWorkshop - Accra, Ghana, July 2026
+## Workshop - Accra, Ghana, July 2026
 
 This repository contains the materials and documentation for the workshop on the bioinformatics of the monkey pox virus
 
