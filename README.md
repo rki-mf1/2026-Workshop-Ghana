@@ -1,6 +1,6 @@
 # Bioinformatics analysis of the monkey pox virus
 
-## BWorkshop - Accra, Ghana, July 2026
+## Workshop - Accra, Ghana, July 2026
 
 This repository contains the materials and documentation for the workshop on the bioinformatics of the monkey pox virus
 
@@ -16,8 +16,7 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 
 | Time          | Activity                 |
 |---------------|--------------------------|
-| 09:00 - 12:00 | Check-in &                |
-|             | Laptop set up            |
+| 09:00 - 12:00 | Check-in & Laptop set up            |
 | 12:00 - 13:00            | 🍽️ Lunch Break           |
 | 13:00 - 16:30 | Linux CLI 
 
@@ -25,13 +24,10 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 
 | Time          | Activity                                 |
 |---------------|------------------------------------------|
-| 09:00 - 09:30 | Recap                                    |
-| ??            | Topic: QC                           |
-| ??            | ☕ Break                                 |
-| ??            | Topic: Mapping                                |
-| ?? | 🍽️ Lunch Break                           |
-| ??            | Topic: Assembly                           |
-| ??            | Topic: Variant calling                    |
+| 09:00 - 09:45 | Recap                                    |
+| 09:45 - 12:00 | Trimmomatic (with coffee break in between) |
+| 12:00 - 13:00 | 🍽️ Lunch Break                     |
+| 13:00 - 16:30  | BWA mem and Freebayes (with coffee break in between) |
 
 
 ### [Day 03 | 2026-07-30 | Thursday](day_03/README.md)
@@ -39,11 +35,8 @@ Linux introduction, terminal basics, navigation, file management, viewing files,
 | Time          | Activity                                   |
 |---------------|--------------------------------------------|
 | 09:00 - 09:30 | Recap                                      |
-| ?? | Topic: QC on assemblies |
 | ?? | ☕ Break                                   |
-| ?? | Topic: iTOL            |
 | ?? | 🍽️ Lunch Break                             |
-| ?? | Topic: treetime            |
 | 16:15 - 16:30 | Recap & Closing remarks          |
 
 
