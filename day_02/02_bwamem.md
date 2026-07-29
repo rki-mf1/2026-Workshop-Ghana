@@ -16,7 +16,7 @@ By the end of this practical, you should be able to:
 Activate the Conda environment that contains `bwa2mem`.
 
 ```bash
-conda activate bwa2mem 
+conda activate bwamem2 
 ```
 
 Check that `bwa` is available.
