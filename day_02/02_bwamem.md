@@ -22,7 +22,7 @@ conda activate bwamem2
 Check that `bwa` is available.
 
 ```bash
-bwa 
+bwa-mem2
 ```
 
 If the command prints a version number, the environment is ready.
