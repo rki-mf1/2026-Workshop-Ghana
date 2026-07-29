@@ -53,7 +53,7 @@ Example command from the genome reconstruction step:
 
 ```bash
 # start at the root directory for the workshop
-cd ~/2026-Workshop-Ghana
+cd ~/2026-Workshop-Ghana/analysis/amplicon-nf
 
 # activate the Nextflow environment
 conda activate nextflow_25
@@ -88,6 +88,9 @@ The pipeline input genomes are listed in a samplesheet. A prepared samplesheet i
 Inspect it before running the pipeline:
 
 ```bash
+mkdir -p analysis/omnifluss_downstream/input
+cd analysis/omnifluss_downstream
+cp  ~/2026-Workshop-Ghana/assets/samplesheet_ill_ods.csv input
 cat input/samplesheet_ill_ods.csv
 ```
 
@@ -113,8 +116,8 @@ nextflow run rki-mf1/omnifluss_downstream \
   -r feature_ouffline-usage \
   -profile MPV,conda \
   --input input/samplesheet_ill_ods.csv \
-  --outdir results_omnifluss_downstream \
-  -c configs/my_omnifluss_ds.cfg \
+  --outdir output \
+  -c ~/2026-Workshop-Ghana/configs/my_omnifluss_ds.cfg \
   --nextclade_dataset_basedir nextclade_data
 ```
 
@@ -125,7 +128,7 @@ After the pipeline finishes, we inspect the output instead of treating the run a
 Move into the result directory:
 
 ```bash
-cd ~/2026-Workshop-Ghana/results_omnifluss_downstream
+cd ~/2026-Workshop-Ghana/analysis/omnifluss_downstream/output
 ls -lh
 ```
 
@@ -154,7 +157,7 @@ Nextclade compares each genome to a curated reference dataset. It reports:
 Move to the Nextclade output folder:
 
 ```bash
-cd ~/2026-Workshop-Ghana/results_omnifluss_downstream/nextclade_run/MPX
+cd ~/2026-Workshop-Ghana/output/nextclade_run/MPX
 ls -lh
 ```
 
@@ -289,7 +292,7 @@ This means sequences with too many unknown amino acids are removed before tree b
 Move to the main result directory:
 
 ```bash
-cd ~/2026-Workshop-Ghana/results_omnifluss_downstream
+cd ~/2026-Workshop-Ghana/output
 ```
 
 Inspect the multiple sequence alignment:

@@ -36,8 +36,8 @@ cd ~/2026-Workshop-Ghana
 Create a working directory for this practical.
 
 ```bash
-mkdir -p analysis/nextflow
-cd analysis/nextflow
+mkdir -p analysis/amplicon-nf
+cd analysis/amplicon-nf
 ```
 
 Create directories for input reads and output files.
@@ -50,19 +50,11 @@ mkdir -p output
 Copy the bam and bai file into the `input` directory.
 
 ```bash
-cp ~/2026-Workshop-Ghana/assets/samplesheet_illumina.csv input
+cp ~/2026-Workshop-Ghana/assets/samplesheet_ill.csv input
 ```
 
-edit the samplesheet
+## 3. Run `amplicon-nf` with `nextflow`
 
-
-
-
-## 3. Run `nextflow`
-
-```bash
-mkdir sdir
-```
 
 ```bash
 nextflow run ~/amplicon-nf \
