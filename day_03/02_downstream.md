@@ -78,7 +78,7 @@ nextflow run rki-mf1/omnifluss_downstream \
   --input input/samplesheet_ill_ods.csv \
   --outdir output \
   -c ~/2026-Workshop-Ghana/configs/my_omnifluss_ds.cfg \
-  --nextclade_dataset_basedir nextclade_data
+  --nextclade_dataset_basedir ~/2026-Workshop-Ghana/nextclade_data
 ```
 
 ## Output Overview
