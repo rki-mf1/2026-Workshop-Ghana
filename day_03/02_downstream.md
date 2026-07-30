@@ -115,7 +115,7 @@ Nextclade compares each genome to a curated reference dataset. It reports:
 Move to the Nextclade output folder:
 
 ```bash
-cd ~/2026-Workshop-Ghana/analysis/omnifluss_downstream/output/nextclade_run/MPX
+cd ~/2026-Workshop-Ghana/analysis/omnifluss_downstream/output/nextclade_run/MPV
 ls -lh
 ```
 
