@@ -35,21 +35,23 @@ By the end of Day 03, you should be able to:
 ### Trees
 
 - https://www.cdc.gov/advanced-molecular-detection/php/training/module-3-4.html
+- https://nextstrain.org/narratives/trees-background
 - https://training.galaxyproject.org/training-material/topics/evolution/tutorials/abc_intro_phylo/tutorial.html#phylogenetics-back-to-basics
 - https://alliblk.github.io/genepi-book/index.html
-- https://nextstrain.org/narratives/trees-background
 
 ### Nextclade
 
-- https://docs.nextstrain.org/projects/nextclade/en/stable/user/algorithm/06-quality-control.html#
+- [Nextclade's quality control](https://docs.nextstrain.org/projects/nextclade/en/stable/user/algorithm/06-quality-control.html#)
 
-### Nextflow & nf-core
+### Pipeline Paper
 
-- https://training.nextflow.io/latest/hello_nf-core/
+- [for Illumina SARS-CoV-2 reads (CovPipe2)](https://doi.org/10.12688/f1000research.136683.2)
+- [for ONT SARS-CoV2 reads (poreCov)](https://doi.org/10.3389/fgene.2021.711437)
 
+### Further Trainings
 
-### Reference-based genome reconstruction for Illumina SARS-CoV-2 reads
-- https://doi.org/10.12688/f1000research.136683.2
+- [ONT Influenza Workshop](https://github.com/rki-mf1/2024-Workshop-Namibia)
+- [Nextflow & nf-core](https://training.nextflow.io/latest/hello_nf-core/)
 
 ---
 
