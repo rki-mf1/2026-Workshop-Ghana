@@ -1,7 +1,7 @@
 sample,fasta
-alva,../../data/fastas/alva.consensus.fasta
-blake,../../data/fastas/blake.consensus.fasta
-claude,../../data/fastas/claude.consensus.fasta
-dilem,../../data/fastas/dilem.consensus.fasta
-elmar,../../data/fastas/elmar.consensus.fasta
-flavio,../../data/fastas/flavio.consensus.fasta
+alva,../../../../data/fastas/alva.consensus.fasta
+blake,../../../../data/fastas/blake.consensus.fasta
+claude,../../../../data/fastas/claude.consensus.fasta
+dilem,../../../../data/fastas/dilem.consensus.fasta
+elmar,../../../../data/fastas/elmar.consensus.fasta
+flavio,../../../../data/fastas/flavio.consensus.fasta
