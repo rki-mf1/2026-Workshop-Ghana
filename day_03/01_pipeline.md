@@ -100,7 +100,8 @@ nextflow run ~/amplicon-nf \
   --input input/samplesheet_ill.csv \
   --outdir output \
   --store_dir ~/2026-Workshop-Ghana/model_dir \
-  -resume
+  -resume \
+  -c ~/2026-Workshop-Ghana/configs/my_amplicon.cfg
 ```
 
 ### What the Options Mean
