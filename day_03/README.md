@@ -47,6 +47,10 @@ By the end of Day 03, you should be able to:
 
 - https://training.nextflow.io/latest/hello_nf-core/
 
+
+### Reference-based genome reconstruction for Illumina SARS-CoV-2 reads
+- https://doi.org/10.12688/f1000research.136683.2
+
 ---
 
 [⬅ Back to main page](../README.md)
